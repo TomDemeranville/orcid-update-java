@@ -50,7 +50,9 @@ Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be remov
 
 ##TODO:
 Add configuration for index.jsp
+
 Move to Guice DI for configuration.
+
 Anything else you feel like.  Pull requests welcome.
 
 ##Contact

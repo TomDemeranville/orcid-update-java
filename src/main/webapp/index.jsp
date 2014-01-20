@@ -27,7 +27,7 @@
 	  <p class="lead">Export your E-Thesis from ETHOS and import it into ORCID</p>
 	  <p class="lead">Please enter your ETHOS Thesis ID (<a href="http://ethos.bl.uk/">Find my thesis ID</a>)</p>
 	  <form role="form" action="javascript:orcidapp.fetchThesis($('#thesisid').val(),'confirm');">
-	  	<p><input type="text" placeholder="Example: uk.bl.ethos.123456" class="form-control" id="thesisid"></p>
+	  	<p><input type="text" placeholder="Example: uk.bl.ethos.398762" class="form-control" id="thesisid"></p>
 	  	<p><button type="submit" class="btn btn-lg btn-primary">Step 1: Fetch my Thesis <img src="/spin.gif" style="display:none" id="spin"/></button></p>
 	  </form>    
 	</div>
@@ -74,7 +74,7 @@
 	
 	<div class="footer">
 	  <p>Provided by <a href="http://bl.uk/">The British Library</a> as part of the <a href="http://odin-project.eu/">ODIN project</a>.</p>
-	  <p>Source code will soon be available on <a href="http://github.com">GitHub</a>. Questions to <a href="http://twitter.com/tomdemeranville">@tomdemeranville</a>.</p>
+	  <p>Source code available on <a href="https://github.com/TomDemeranville/orcid-update-java">GitHub</a>. Questions to <a href="http://twitter.com/tomdemeranville">@tomdemeranville</a>.</p>
 	</div>
 
 </div>
