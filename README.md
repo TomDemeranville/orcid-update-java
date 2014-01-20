@@ -4,7 +4,7 @@ This is a java based application can log users in via ORCID OAuth and push new w
 
 The user journey is:
 
-1. user enters an identifier for an external system
+1. user enters an identifier for an external system (our implementation uses an Ethos identifier)
 2. user confirms the title is correct
 3. user logs in at orcid
 4. user confirms profile update
@@ -13,11 +13,13 @@ Alternatively, external apps can link directly to the service with orcid/request
 
 It uses RESTlet on the server side and JQuery/Bootstrap on the client side.  It will work within GAE or a simple servlet container.
 
+You can see it in action at http://ethos-orcid.appspot.com/
+
 ##Customization:
 
 The application can be easily modified to support your work metadata of choice in a few steps:
 
-1. Implement the IsOrcidWorkProvider and return isOrcidWork instances.  It must be thread safe and have a no-arg constructor.  See EthosMetadataScraper for an example.
+1. Implement the IsOrcidWorkProvider interface and return isOrcidWork instances.  It must be thread safe and have a no-arg constructor.  See EthosMetadataScraper for an example.
 2. Rename web.xml.example to web.xml and enter your IsOrcidWorkProvider class name & ORCID credentials.
 3. Modify the wording of index.jsp to reflect your use case. (this will be configurable soon)
 
@@ -40,7 +42,7 @@ Example isOrcidWorkProvider.  Fetches metadata from ethos.bl.uk and transforms i
 RESTlet resources.  Handles incoming requests.
 
 ###uk.bl.odin.schema.orcid.messages.onepointone
-JAXB generated XML bindings for the ORCID v1.1 xml message schema.  Generated with Java 1.6 and JVM version specific.  For other JVM versions it may need regenerating.
+JAXB generated XML bindings for the ORCID v1.1 xml message schema.  Generated with Java 1.6 and is JVM version specific.  For other JVM versions it may need regenerating.  Note GAE only supports Java 1.6.
 
 ##Other info
 Build based on GAE maven archetype
