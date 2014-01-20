@@ -20,12 +20,27 @@ You can see it in action at http://ethos-orcid.appspot.com/
 The application can be easily modified to support your work metadata of choice in a few steps:
 
 1. Implement the IsOrcidWorkProvider interface and return isOrcidWork instances.  It must be thread safe and have a no-arg constructor.  See EthosMetadataScraper for an example.
-2. Rename web.xml.example to web.xml and enter your IsOrcidWorkProvider class name & ORCID credentials.
+2. Rename web.xml.example to web.xml and enter your IsOrcidWorkProvider class name & ORCID credentials (see below).
 3. Modify the wording of index.jsp to reflect your use case. (this will be configurable soon)
 
-##Deployment:
+###Servlet Init params
+
+* "OrcidWorkProvider" fully qualified class name for IsOrcidWorkProvider implementation
+* "OrcidClientID", "OrcidClientSecret", "OrcidReturnURI" ORCID OAuth params
+* "OrcidSandbox" true for sandbox, false to use live api
+
+###Deployment:
 
 Two maven goals, appengine:devserver and appengine:update.  The first runs a local GAE instance, the second pushes it to the cloud.  To deploy from eclipse: Right click on the pom.xml run as -> Maven Build.  You will need to modify appengine-web.xml to reference your application name.  It'll also play nicely in tomcat or jetty.
+
+##RESTful Routes:
+	
+* "/orcid/token" convert authorization codes from ORCID into authz tokens
+* "/orcid/requests" generate a authz request url (?redirect=true to bounce user to ORCID with http redirect)
+* "/orcid/requests/{originalRef}" generate a authz request url with originalRef as state param (?redirect=true to bounce user to ORCID with http redirect)
+* "/orcid/{orcid}/orcid-works/create" create a work by posting OrcidWork XML (requires ?token= orcid oauth token) 
+* "/meta/{id}" fetch metadata from external source - use (?json) for raw form (note this is an implementation specific form, not a JSON form of ORCID metadata)
+* "/webjars" webjars endpoint - example: /webjars/bootstrap/3.0.3/css/bootstrap.min.css also includes JQuery 1.9.0
 
 ##Packages
 

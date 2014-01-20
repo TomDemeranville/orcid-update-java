@@ -4,6 +4,8 @@ import org.restlet.Application;
 import org.restlet.Context;
 import org.restlet.Restlet;
 
+/** Boilerplate application
+ */
 public class RootApplication extends Application {
 
 	public RootApplication(Context context) {
