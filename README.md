@@ -23,15 +23,17 @@ The application can be easily modified to support your work metadata of choice i
 2. Rename web.xml.example to web.xml and enter your IsOrcidWorkProvider class name & ORCID credentials (see below).
 3. Modify the wording of index.jsp to reflect your use case. (this will be configurable soon)
 
-###Servlet Init params
+##Servlet Init params
 
 * "OrcidWorkProvider" fully qualified class name for IsOrcidWorkProvider implementation
 * "OrcidClientID", "OrcidClientSecret", "OrcidReturnURI" ORCID OAuth params
 * "OrcidSandbox" true for sandbox, false to use live api
 
-###Deployment:
+###Build and deployment:
 
-Two maven goals, appengine:devserver and appengine:update.  The first runs a local GAE instance, the second pushes it to the cloud.  To deploy from eclipse: Right click on the pom.xml run as -> Maven Build.  You will need to modify appengine-web.xml to reference your application name.  It'll also play nicely in tomcat or jetty.
+Two maven goals, appengine:devserver and appengine:update.  The first runs a local GAE instance, the second pushes it to the cloud.  Maven plugin means it can be deployed/built from eclipse: Right click on the pom.xml run as -> Maven Build.  You will need to modify appengine-web.xml to reference your application name.  
+
+It'll also play nicely in tomcat or jetty as a standard WAR file.
 
 ##RESTful Routes:
 	

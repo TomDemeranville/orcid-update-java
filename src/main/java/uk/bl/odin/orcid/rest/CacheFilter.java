@@ -11,12 +11,8 @@ import org.restlet.data.CacheDirective;
 import org.restlet.data.Status;
 import org.restlet.routing.Filter;
 
-/**
- * Filter that modifies maxage and expirationdate HTTP headers to expire in a
+/** Filter that modifies max age and expiration date HTTP headers to expire in a
  * years time.
- * 
- * @author tom
- * 
  */
 public class CacheFilter extends Filter {
 
@@ -24,6 +20,8 @@ public class CacheFilter extends Filter {
 		super(context, restlet);
 	}
 
+	/** Sets the HTTP Headers if request was successful
+	 */
 	protected void afterHandle(Request request, Response response) {
 		super.afterHandle(request, response);
 		if (response != null && response.getEntity() != null) {

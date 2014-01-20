@@ -21,11 +21,7 @@ import uk.bl.odin.schema.orcid.messages.onepointone.WorkExternalIdentifiers;
 import uk.bl.odin.schema.orcid.messages.onepointone.WorkTitle;
 import uk.bl.odin.schema.orcid.messages.onepointone.Year;
 
-/**
- * Models the DC metadata we can extract from ETHOS HTML meta tags
- * 
- * @author tom
- * 
+/** Models the DC metadata we can extract from ETHOS HTML meta tags and transforms them into OrcidWorks
  */
 public class ThesisMetadata implements IsOrcidWork {
 
@@ -41,8 +37,7 @@ public class ThesisMetadata implements IsOrcidWork {
 
 	// private String dcLanguage;
 
-	/**
-	 * Transform into an OrcidWork
+	/** Transform into an OrcidWork
 	 * 
 	 * @return a JAXB annotated object hierarchy
 	 */

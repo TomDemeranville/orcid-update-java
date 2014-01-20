@@ -1,10 +1,6 @@
 package uk.bl.odin.orcid.domain;
 
-/**
- * General Bibtex utilities
- * 
- * @author tom
- * 
+/** General Bibtex utilities
  */
 public class BibtexBuilder {
 
@@ -13,8 +9,7 @@ public class BibtexBuilder {
 	private BibtexBuilder() {
 	}
 
-	/**
-	 * Constructs a Bibtext PHD citation from its component parts. Escapes
+	/** Constructs a Bibtext PHD citation from its component parts. Escapes
 	 * characters, generates an ID
 	 * 
 	 * @return a bibtex encoded string
@@ -30,8 +25,7 @@ public class BibtexBuilder {
 		return b.toString();
 	}
 
-	/**
-	 * Creates a bibtex identifier from some parts of the metadata With thanks
+	/** Creates a bibtex identifier from some parts of the metadata With thanks
 	 * to https://github.com/uschindler
 	 * 
 	 */
@@ -59,8 +53,7 @@ public class BibtexBuilder {
 		return sb.toString();
 	}
 
-	/**
-	 * Escapes accents and special characters, bibtex style With thanks to
+	/** Escapes accents and special characters, bibtex style With thanks to
 	 * https://github.com/uschindler
 	 * 
 	 */

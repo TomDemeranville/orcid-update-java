@@ -16,12 +16,12 @@ import uk.bl.odin.schema.orcid.messages.onepointone.OrcidWork;
 
 public class OrcidWorkCreationResource extends ServerResource {
 
-	/**
-	 * Accepts an XML encoded ORCID work. POSTs work to ORCID as a new work.
+	/** Accepts an XML encoded ORCID work. POSTs work to ORCID as a new work.
+	 * Requires ?token= query param containing ORCID auth token.
 	 * 
 	 * @param rep
 	 *            a serialised OrcidWork
-	 * @throws IOException
+	 * @throws IOException if we can't append. (TODO: handle properly)
 	 */
 	@Post
 	public void addWork(Representation rep) throws IOException {

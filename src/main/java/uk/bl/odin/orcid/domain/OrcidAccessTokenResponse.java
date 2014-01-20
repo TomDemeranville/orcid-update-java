@@ -1,7 +1,6 @@
 package uk.bl.odin.orcid.domain;
 
-/**
- * Models the OAuth token response from ORCID. example:
+/** Models the OAuth token response from ORCID. example:
  * {"access_token":"4511576a-eaa1-48a4-b282-4fab5f889f87",
  * "token_type":"bearer", "refresh_token":"77256874-2036-41c9-9800-fe56b5e9a2a4"
  * , "expires_in":3599, "scope":"/orcid-works/update",
