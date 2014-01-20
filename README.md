@@ -1,6 +1,6 @@
 #Orcid Profile Updater
 
-Hi.  This java based application can log users in via ORCID Oauth and push new works into their profiles.  It was built to work with a British Library service called Ethos, but is easily customisable for other metadata providers.
+This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos, but is easily customizable for other metadata providers.
 
 The user journey is:
 1. user enters an identifier for an external system
@@ -12,9 +12,9 @@ Alternatively, external apps can link directly to the service with orcid/request
 
 It uses RESTlet on the server side and JQuery/Bootstrap on the client side.  It will work within GAE or a simple servlet container.
 
-##Customisation:
+##Customization:
 
-The application can be easily nmodified to support your work metadata of choice in a few steps:
+The application can be easily modified to support your work metadata of choice in a few steps:
 
 1. Implement the IsOrcidWorkProvider and return isOrcidWork instances.  It must be thread safe and have a no-arg constructor.  See EthosMetadataScraper for an example.
 2. Rename web.xml.example to web.xml and enter your IsOrcidWorkProvider class name & ORCID credentials.
