@@ -57,11 +57,12 @@ public class RootRouter extends Router {
 		this.attach("/webjars", cache);
 
 		// configure our oauth client
-		if (!(context.getParameters().contains("OrcidClientID") &&
-				context.getParameters().contains("OrcidClientSecret") &&
-				context.getParameters().contains("OrcidReturnURI") &&
-				context.getParameters().contains("OrcidSandbox") )){
-			throw new IllegalStateException("cannot create OrcidOAuthClient - missing init parameter");
+		if (context.getParameters().getFirst("OrcidClientID") == null || 
+				context.getParameters().getFirst("OrcidClientSecret")  == null || 
+				context.getParameters().getFirst("OrcidReturnURI")  == null || 
+				context.getParameters().getFirst("OrcidSandbox")  == null ){
+			log.severe("Init params are:  "+context.getParameters().toString());
+			throw new IllegalStateException("cannot create OrcidOAuthClient - missing init parameter(s)");
 		}else{
 			String clientID = context.getParameters().getFirst("OrcidClientID").getValue().toString();
 			String clientSecret = context.getParameters().getFirst("OrcidClientSecret").getValue().toString();
@@ -73,7 +74,7 @@ public class RootRouter extends Router {
 		}
 		
 		// configure our metadata provider
-		if (!context.getParameters().contains("OrcidWorkProvider")){
+		if (context.getParameters().getFirst("OrcidWorkProvider") ==null){
 			throw new IllegalStateException("cannot create OrcidWorkProvier - missing init parameter");
 		}else{
 			String providerName = this.getContext().getParameters().getFirst("OrcidWorkProvider").getValue().toString();
@@ -85,6 +86,7 @@ public class RootRouter extends Router {
 						+ e);
 			}
 		}
+		
 		log.info("RootRouter created, ready to serve");
 	}
 

@@ -53,6 +53,8 @@ public class OrcidOAuthClient {
 			"application/orcid+xml");
 
 	public OrcidOAuthClient(String clientID, String clientSecret, String redirectUri, boolean sandbox) {
+		if (clientID==null || clientSecret==null || redirectUri == null)
+			throw new IllegalArgumentException("cannot create OrcidOAuthClient - missing init parameter(s)");
 		if (sandbox) {
 			this.loginUri = SANDBOX_LOGIN_URI;
 			this.apiUriToken = SANDBOX_API_URI_TOKEN;
