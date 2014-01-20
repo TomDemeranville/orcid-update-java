@@ -15,10 +15,14 @@ import uk.bl.odin.orcid.rest.OrcidAuthURLResource;
 import uk.bl.odin.orcid.rest.OrcidTokenResource;
 import uk.bl.odin.orcid.rest.OrcidWorkCreationResource;
 
+
 public class RootRouter extends Router {
 
 	private static final Logger log = Logger.getLogger(RootRouter.class.getName());
 
+	/** Configures endpoints.
+	 * Sets up OrcidOAuthClient & OrcidWorkProvider and places them in the Context
+	 */
 	public RootRouter(Context context) {
 		super(context);
 
@@ -37,7 +41,7 @@ public class RootRouter extends Router {
 		// fetch metadata from external source - use (?json) for raw form
 		this.attach("/meta/{id}", MetadataFetchResource.class);
 
-		// add a webjars listener.
+		// add a webjars listener (see http://demeranville.com/controlling-the-cache-headers-for-a-restlet-directory/ )
 		final Directory dir = new Directory(getContext(), "clap://class/META-INF/resources/webjars");
 		Filter cache = new CacheFilter(getContext(), dir);
 		this.attach("/webjars", cache);

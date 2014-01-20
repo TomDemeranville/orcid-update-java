@@ -1,6 +1,6 @@
 #Orcid Profile Updater
 
-This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos (http://ethos.bl.uk), but is easily customizable for use with other metadata providers.
+This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos (http://ethos.bl.uk), but is easily customizable for use with other metadata providers.  It's BETA as-is software.
 
 The user journey is:
 
@@ -52,6 +52,8 @@ Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be remov
 Add configuration for index.jsp
 
 Move to Guice DI for configuration.
+
+Handle refresh tokens properly
 
 Anything else you feel like.  Pull requests welcome.
 
