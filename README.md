@@ -3,6 +3,7 @@
 This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos, but is easily customizable for other metadata providers.
 
 The user journey is:
+
 1. user enters an identifier for an external system
 2. user confirms the title is correct
 3. user logs in at orcid
