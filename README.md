@@ -1,6 +1,6 @@
 #Orcid Profile Updater
 
-This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos, but is easily customizable for other metadata providers.
+This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos (http://ethos.bl.uk), but is easily customizable for use with other metadata providers.
 
 The user journey is:
 
