@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 	//VERY simple templating. YMMV.
-    final String title = "ORCID Import";
+    final String title = "ORCID Import!!";
 	final String introline1 = "Export your E-Thesis from ETHOS and import it into ORCID";
 	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>)";
 	final String inputPlaceholder = "Example: uk.bl.ethos.398762";
@@ -31,32 +31,32 @@
 
 	<div class="jumbotron" id="fetch" style="display:none">
 	  <h1><%= title %> <span class="glyphicon glyphicon-cloud-upload"></span></h1>
-	  <p class="lead"><%= introline1 %></p>
+	  <p class="lead" id="welcome"><%= introline1 %></p>
 	  <p class="lead"><%= introline2 %></p>
-	  <form role="form" action="javascript:orcidapp.fetchWork($('#workid').val(),'confirm');">
+	  <form role="form" action="javascript:orcidapp.fetchWork($('#workid').val());">
 	  	<p><input type="text" placeholder="<%= inputPlaceholder %>" class="form-control" id="workid"></p>
-	  	<p><button type="submit" class="btn btn-lg btn-primary">Step 1: Fetch my work <img src="/spin.gif" style="display:none" id="spin"/></button></p>
+	  	<p><button type="submit" class="btn btn-lg btn-primary">Fetch my work <img src="/spin.gif" style="display:none" id="spin"/></button></p>
 	  </form>    
 	</div>
 	
-	<div class="jumbotron" id="confirm" style="display:none">
+	<div class="jumbotron" id="confirmAndGoToORCID" style="display:none">
 	  <h1><%= title %><span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <p class="lead">Is this the work you're looking for? </p>
 	  <div class="alert alert-info">
 		  <p class="lead">Title: <b id="work1"></b></p>
 	  </div>
-	  <p><button class="btn btn-lg btn-primary" onClick="orcidapp.loginToOrcid($('#workid').val());">Step 2: Log me into ORCID</span></button></p>
+	  <p><button class="btn btn-lg btn-primary" onClick="orcidapp.loginToOrcid($('#workid').val());">Log me into ORCID</span></button></p>
 	  <p><button class="btn btn-warning" onClick="orcidapp.startAgain();">That's not my work. Start again</button></p>
 	</div>
 	
-	<div class="jumbotron" id="update" style="display:none">
+	<div class="jumbotron" id="confirmAndUpdate" style="display:none">
 	  <h1><%= title %><span class="glyphicon glyphicon-cloud-upload"></span></h1>
-	  <p class="lead">Welcome back, ready to update your profile?</p>
+	  <p class="lead">Ready to update your profile?</p>
 	  <div class="alert alert-info">
 		  <p>ORCID: <b id="orcid"></b></p>	  
 		  <p class="lead">Title: <b id="work2"></b></p>
 	  </div>
-	  <p><button onClick="orcidapp.updateProfile();" class="btn btn-lg btn-primary">Step 3: Update my profile <img src="/spin.gif" style="display:none" id="spin2"/></button></p>	  
+	  <p><button onClick="orcidapp.updateProfile();" class="btn btn-lg btn-primary">Update my profile <img src="/spin.gif" style="display:none" id="spin2"/></button></p>	  
 	</div>
 
 	<div class="jumbotron" id="finish" style="display:none">
@@ -95,8 +95,7 @@ var orcidapp = (function (){
 	var self = {};
 
 	//fetch the work XML (using the OrcidWork schema)
-	self.fetchWork = function(id,nextPanel){
-		console.log("fetching work "+id+" : "+nextPanel);
+	self.fetchWork = function(id){
 		if (id=="")return;
 		$("#spin").show();
 		$.ajax({
@@ -111,7 +110,10 @@ var orcidapp = (function (){
 			    self.workTitle = $(result).find("work-title").text();
 				$('#work1').text(self.workTitle);
 				$('#work2').text(self.workTitle);
-			    self.showPanel(nextPanel);
+				if (self.authToken && self.orcid)
+					self.showPanel("confirmAndUpdate");
+				else
+					self.showPanel("confirmAndGoToORCID");
 			    },
 		    error : function (xhr, ajaxOptions, thrownError){  
 				$("#spin").hide();
@@ -164,8 +166,14 @@ var orcidapp = (function (){
 			self.orcid = json.orcid;
 			$('#orcid').text(self.orcid);
 			if (work)
-				self.fetchWork(work,"update");
+				self.fetchWork(work);
+			else{
+				$('#welcome').text("You're logged in with the ORCID: "+self.orcid);
+				self.showPanel("fetch");
+			}
 		}).fail(function(response) {
+			self.orcid=null;
+			self.authToken=null;
 			showError("Sorry, you ran out of time.");
 		});	
 	};	
@@ -202,12 +210,13 @@ var orcidapp = (function (){
 
 //STARTUP CODE
 $(function() {
-	if (getUrlVar("code") && getUrlVar("state")){
+	if (getUrlVar("code1")){
 		orcidapp.showPanel("pleasewait");
-		//if we have a code & state, attempt to get auth token & work
-		orcidapp.fetchAuthToken(getUrlVar("code"),getUrlVar("state"));
-	}else{
+		orcidapp.fetchAuthToken(getUrlVar("code1"),getUrlVar("state"));
+	} else {
 		//otherwise show default view
+		if (getUrlVar("state"))
+			$('#workid').val(getUrlVar("state"));
 		orcidapp.startAgain();
 	}
 });
