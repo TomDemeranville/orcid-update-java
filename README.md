@@ -71,7 +71,7 @@ Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be remov
 ##TODO:
 Add configuration for index.jsp
 
-Move to Guice DI for configuration.
+Handle case where we're sent an authentication code but don't have an ethosID
 
 Handle refresh tokens properly
 

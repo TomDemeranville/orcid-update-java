@@ -1,8 +1,15 @@
-<%@ page import="com.google.apphosting.api.ApiProxy" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+	//VERY simple templating. YMMV.
+    final String title = "ORCID Import";
+	final String introline1 = "Export your E-Thesis from ETHOS and import it into ORCID";
+	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>)";
+	final String inputPlaceholder = "Example: uk.bl.ethos.398762";
+%>
+
 <html>
 <head>
-    <title>ORCID Import</title>
+    <title><%= title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -23,49 +30,49 @@
 <div class="container" >
 
 	<div class="jumbotron" id="fetch" style="display:none">
-	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
-	  <p class="lead">Export your E-Thesis from ETHOS and import it into ORCID</p>
-	  <p class="lead">Please enter your ETHOS Thesis ID (<a href="http://ethos.bl.uk/" target="_blank">Find my thesis ID</a>)</p>
-	  <form role="form" action="javascript:orcidapp.fetchThesis($('#thesisid').val(),'confirm');">
-	  	<p><input type="text" placeholder="Example: uk.bl.ethos.398762" class="form-control" id="thesisid"></p>
-	  	<p><button type="submit" class="btn btn-lg btn-primary">Step 1: Fetch my Thesis <img src="/spin.gif" style="display:none" id="spin"/></button></p>
+	  <h1><%= title %> <span class="glyphicon glyphicon-cloud-upload"></span></h1>
+	  <p class="lead"><%= introline1 %></p>
+	  <p class="lead"><%= introline2 %></p>
+	  <form role="form" action="javascript:orcidapp.fetchWork($('#workid').val(),'confirm');">
+	  	<p><input type="text" placeholder="<%= inputPlaceholder %>" class="form-control" id="workid"></p>
+	  	<p><button type="submit" class="btn btn-lg btn-primary">Step 1: Fetch my work <img src="/spin.gif" style="display:none" id="spin"/></button></p>
 	  </form>    
 	</div>
 	
 	<div class="jumbotron" id="confirm" style="display:none">
-	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
+	  <h1><%= title %><span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <p class="lead">Is this the work you're looking for? </p>
 	  <div class="alert alert-info">
-		  <p class="lead">Thesis: <b id="thesis">thesis details ...</b></p>
+		  <p class="lead">Title: <b id="work1"></b></p>
 	  </div>
-	  <p><button class="btn btn-lg btn-primary" onClick="orcidapp.loginToOrcid($('#thesisid').val());">Step 2: Log me into ORCID</span></button></p>
+	  <p><button class="btn btn-lg btn-primary" onClick="orcidapp.loginToOrcid($('#workid').val());">Step 2: Log me into ORCID</span></button></p>
 	  <p><button class="btn btn-warning" onClick="orcidapp.startAgain();">That's not my work. Start again</button></p>
 	</div>
 	
 	<div class="jumbotron" id="update" style="display:none">
-	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
+	  <h1><%= title %><span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <p class="lead">Welcome back, ready to update your profile?</p>
 	  <div class="alert alert-info">
-		  <p>ORCID: <b id="orcid">orcid number ..</b></p>	  
-		  <p class="lead">Thesis: <b id="thesis2">thesis details ...</b></p>
+		  <p>ORCID: <b id="orcid"></b></p>	  
+		  <p class="lead">Title: <b id="work2"></b></p>
 	  </div>
 	  <p><button onClick="orcidapp.updateProfile();" class="btn btn-lg btn-primary">Step 3: Update my profile <img src="/spin.gif" style="display:none" id="spin2"/></button></p>	  
 	</div>
 
 	<div class="jumbotron" id="finish" style="display:none">
-	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
+	  <h1><%= title %><span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <p class="lead">Congratulations. Job done!</p>
 	  <p><a class="btn btn-lg btn-primary" href="https://orcid.org/my-orcid" role="button" onClick="orcidapp.goToOrcid()">View my updated ORCID profile</span></a></p>        
 	</div>
 	
 	<div class="jumbotron" id="error" style="display:none">
-	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
+	  <h1><%= title %><span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <div class="alert alert-danger"><p class="lead" id="errormsg"></p></div>
 	  <p><button class="btn btn-lg btn-primary" onClick="javascript:orcidapp.startAgain();">Start again</button></p>        
 	</div>
 	
 	<div class="jumbotron" id="pleasewait" style="display:none">
-	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
+	  <h1><%= title %><span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <div class="alert alert-success">
 		  <p class=lead>Please wait a moment while we fetch your details</p>
 		  <p><img src="/spin.gif"/></p>        
@@ -87,9 +94,9 @@
 var orcidapp = (function (){
 	var self = {};
 
-	//fetch the thesis XML (using the OrcidWork schema)
-	self.fetchThesis = function(id,nextPanel){
-		console.log("fetching thesis "+id+" : "+nextPanel);
+	//fetch the work XML (using the OrcidWork schema)
+	self.fetchWork = function(id,nextPanel){
+		console.log("fetching work "+id+" : "+nextPanel);
 		if (id=="")return;
 		$("#spin").show();
 		$.ajax({
@@ -100,17 +107,17 @@ var orcidapp = (function (){
 				$("#spin").hide();
 			    console.log("yay");
 			    console.log(result);
-			    self.thesisXML = result;
-			    self.thesisTitle = $(result).find("work-title").text();
-				$('#thesis').text(self.thesisTitle);
-				$('#thesis2').text(self.thesisTitle);
+			    self.workXML = result;
+			    self.workTitle = $(result).find("work-title").text();
+				$('#work1').text(self.workTitle);
+				$('#work2').text(self.workTitle);
 			    self.showPanel(nextPanel);
 			    },
 		    error : function (xhr, ajaxOptions, thrownError){  
 				$("#spin").hide();
 		        console.log(xhr.status);          
 		        console.log(thrownError);
-		        showError("There was a problem fetching your thesis from Ethos, check you've entered the ID correctly.");		    } 
+		        showError("There was a problem fetching your work, please check you've entered the ID correctly.");		    } 
 		}); 
 	};
 
@@ -127,7 +134,7 @@ var orcidapp = (function (){
 		$("#spin2").show();
 		$.ajax({
 		    url: "/api/orcid/"+self.orcid+"/orcid-works/create?token="+self.authToken,
-		    data: self.thesisXML, 
+		    data: self.workXML, 
 		    type: 'POST',
 		    contentType: "text/xml",
 		    dataType: "xml",
@@ -147,17 +154,17 @@ var orcidapp = (function (){
 		}); 
 	};
 
-	//get the auth token and then the thesis xml if sucessful (if we have a thesis code)
-	self.fetchAuthToken = function(authcode,thesis){
+	//get the auth token and then the work xml if sucessful (if we have a work code)
+	self.fetchAuthToken = function(authcode,work){
 		$.getJSON("/api/orcid/token", {
-			code: authcode, state: thesis
+			code: authcode, state: work
 		}).done(function(json) {
 			console.log(json);
 			self.authToken = json.access_token;
 			self.orcid = json.orcid;
 			$('#orcid').text(self.orcid);
-			if (thesis)
-				self.fetchThesis(thesis,"update");
+			if (work)
+				self.fetchWork(work,"update");
 		}).fail(function(response) {
 			showError("Sorry, you ran out of time.");
 		});	
@@ -181,8 +188,8 @@ var orcidapp = (function (){
 	//we get these with rest, but bundling it in with the page would it a bit quicker and easier. YMMV.
 	self.authToken = null;
 	self.orcid = null;
-	self.theisXML = null;
-	self.theisTitle = null;
+	self.workXML = null;
+	self.workTitle = null;
 
 	//extract a query param fromthe URL.
 	getUrlVar = function(key){
@@ -197,7 +204,7 @@ var orcidapp = (function (){
 $(function() {
 	if (getUrlVar("code") && getUrlVar("state")){
 		orcidapp.showPanel("pleasewait");
-		//if we have a code & state, attempt to get auth token & thesis
+		//if we have a code & state, attempt to get auth token & work
 		orcidapp.fetchAuthToken(getUrlVar("code"),getUrlVar("state"));
 	}else{
 		//otherwise show default view
