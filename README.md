@@ -73,11 +73,13 @@ Externalise configuration for index.jsp
 
 Improve error handling - server vs client vs 404 errors
 
-Handle case where we're sent an authentication code but don't have an ethosID
+Handle case where we're sent an authentication code but don't yet have an ethosID
 
 Handle refresh tokens properly
 
 Anything else you feel like.  Pull requests welcome.
 
 ##Contact
-@tomdemeranville
+[@tomdemeranville on twitter](https://twitter.com/tomdemeranville)
+[Announcement](http://demeranville.com/orcid-open-source-java-client/)
+[My blog](http://demeranville.com)
