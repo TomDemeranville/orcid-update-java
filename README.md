@@ -69,7 +69,7 @@ Build based on GAE maven archetype
 Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be removed from pom if not using ecplise)
 
 ##TODO:
-Add configuration for index.jsp
+Externalise configuration for index.jsp
 
 Handle case where we're sent an authentication code but don't have an ethosID
 
