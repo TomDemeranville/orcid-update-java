@@ -25,7 +25,7 @@
 	<div class="jumbotron" id="fetch" style="display:none">
 	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <p class="lead">Export your E-Thesis from ETHOS and import it into ORCID</p>
-	  <p class="lead">Please enter your ETHOS Thesis ID (<a href="http://ethos.bl.uk/">Find my thesis ID</a>)</p>
+	  <p class="lead">Please enter your ETHOS Thesis ID (<a href="http://ethos.bl.uk/" target="_blank">Find my thesis ID</a>)</p>
 	  <form role="form" action="javascript:orcidapp.fetchThesis($('#thesisid').val(),'confirm');">
 	  	<p><input type="text" placeholder="Example: uk.bl.ethos.398762" class="form-control" id="thesisid"></p>
 	  	<p><button type="submit" class="btn btn-lg btn-primary">Step 1: Fetch my Thesis <img src="/spin.gif" style="display:none" id="spin"/></button></p>
