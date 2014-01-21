@@ -2,7 +2,13 @@
 
 This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos (http://ethos.bl.uk), but is easily customizable for use with other metadata providers.  It's BETA as-is software.
 
-The user journey can be auth first or choose first.  That's either:
+It uses RESTlet on the server side and JQuery/Bootstrap on the client side.  It will work within GAE or a simple servlet container.
+
+You can see it in action at (http://ethos-orcid.appspot.com/)
+
+##User Journey
+
+It's either:
 
 1. user enters an identifier for an external system (our implementation uses an Ethos identifier)
 2. user confirms the title is correct
@@ -14,11 +20,7 @@ or
 1. user arrives at site with ORCID OAuth code parameter and enters work identifier
 2. user confrims work title and updates
 
-Alternatively, external apps can link directly to the service with `orcid/requests/{your_work_identifier}?redirect=true` and skip the "Find your work page" steps 1&2.  Users will be pushed directly to ORCID for authentication.
-
-It uses RESTlet on the server side and JQuery/Bootstrap on the client side.  It will work within GAE or a simple servlet container.
-
-You can see it in action at (http://ethos-orcid.appspot.com/)
+To use the second workflow, external apps can link directly to the service at `/orcid/requests/{your_work_identifier}?redirect=true` to skip steps 1&2, the "Find your work page" part.  Users will be pushed directly to ORCID for authentication.
 
 ##Customization:
 
