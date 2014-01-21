@@ -210,9 +210,9 @@ var orcidapp = (function (){
 
 //STARTUP CODE
 $(function() {
-	if (getUrlVar("code1")){
+	if (getUrlVar("code")){
 		orcidapp.showPanel("pleasewait");
-		orcidapp.fetchAuthToken(getUrlVar("code1"),getUrlVar("state"));
+		orcidapp.fetchAuthToken(getUrlVar("code"),getUrlVar("state"));
 	} else {
 		//otherwise show default view
 		if (getUrlVar("state"))
