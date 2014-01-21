@@ -19,7 +19,7 @@ You can see it in action at http://ethos-orcid.appspot.com/
 
 The application can be easily modified to support your work metadata of choice in a few steps:
 
-1. Implement the IsOrcidWorkProvider interface and return isOrcidWork instances.  It must be thread safe and have a no-arg constructor.  See EthosMetadataScraper for an example.
+1. Implement the IsOrcidWorkProvider interface and return isOrcidWork instances.  It must be thread safe and have a no-arg constructor.  See EthosMetadataScraper (https://github.com/TomDemeranville/orcid-update-java/blob/master/src/main/java/uk/bl/odin/orcid/ethos/EthosMetaScraper.java) for an example.
 2. Rename web.xml.example to web.xml and enter your IsOrcidWorkProvider class name & ORCID credentials (see below).
 3. Modify the wording of index.jsp to reflect your use case. (this will be configurable soon)
 
@@ -47,7 +47,7 @@ It'll also play nicely in tomcat or jetty as a standard WAR file.
 ##Packages
 
 ###uk.bl.odin.orcid
-Root package.  Contains setup code for RESTlet, configures routing and pulls configuration from web.xml
+Root package.  Contains setup code for RESTlet, configures routing and pulls configuration from web.xml to create injectable dependencies.
 
 ###uk.bl.odin.orcid.domain
 Core ORCID client logic and interfaces.  Also contains helper classes for things like Bibtex.
@@ -57,6 +57,9 @@ Example isOrcidWorkProvider.  Fetches metadata from ethos.bl.uk and transforms i
 
 ###uk.bl.odin.orcid.rest
 RESTlet resources.  Handles incoming requests.
+
+###uk.bl.odin.orcid.guice
+Boilerplate Guice DI classes, taken from the RESTlet org.restlet.ext.guice incubator project.
 
 ###uk.bl.odin.schema.orcid.messages.onepointone
 JAXB generated XML bindings for the ORCID v1.1 xml message schema.  Generated with Java 1.6 and is JVM version specific.  For other JVM versions it may need regenerating.  Note GAE only supports Java 1.6.

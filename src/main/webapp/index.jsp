@@ -34,12 +34,12 @@
 	
 	<div class="jumbotron" id="confirm" style="display:none">
 	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
-	  <p class="lead">Is this the thesis you're looking for? </p>
+	  <p class="lead">Is this the work you're looking for? </p>
 	  <div class="alert alert-info">
 		  <p class="lead">Thesis: <b id="thesis">thesis details ...</b></p>
 	  </div>
 	  <p><button class="btn btn-lg btn-primary" onClick="orcidapp.loginToOrcid($('#thesisid').val());">Step 2: Log me into ORCID</span></button></p>
-	  <p><button class="btn btn-warning" onClick="orcidapp.startAgain();">That's not my thesis. Start again</button></p>
+	  <p><button class="btn btn-warning" onClick="orcidapp.startAgain();">That's not my work. Start again</button></p>
 	</div>
 	
 	<div class="jumbotron" id="update" style="display:none">
@@ -55,7 +55,7 @@
 	<div class="jumbotron" id="finish" style="display:none">
 	  <h1>ORCID Import <span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <p class="lead">Congratulations. Job done!</p>
-	  <p><a class="btn btn-lg btn-primary" href="https://sandbox-1.orcid.org/my-orcid" role="button" onClick="orcidapp.goToOrcid()">View my updated ORCID profile</span></a></p>        
+	  <p><a class="btn btn-lg btn-primary" href="https://orcid.org/my-orcid" role="button" onClick="orcidapp.goToOrcid()">View my updated ORCID profile</span></a></p>        
 	</div>
 	
 	<div class="jumbotron" id="error" style="display:none">

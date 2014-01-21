@@ -2,6 +2,7 @@ package uk.bl.odin.orcid.rest;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -12,9 +13,12 @@ import org.restlet.resource.Post;
 import org.restlet.resource.ServerResource;
 
 import uk.bl.odin.orcid.domain.OrcidOAuthClient;
+import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 import uk.bl.odin.schema.orcid.messages.onepointone.OrcidWork;
 
-public class OrcidWorkCreationResource extends ServerResource {
+public class OrcidWorkCreationResource extends SelfInjectingServerResource {
+
+	@Inject OrcidOAuthClient orcidOAuthClient;
 
 	/** Accepts an XML encoded ORCID work. POSTs work to ORCID as a new work.
 	 * Requires ?token= query param containing ORCID auth token.
@@ -31,7 +35,7 @@ public class OrcidWorkCreationResource extends ServerResource {
 			OrcidWork work = (OrcidWork) um.unmarshal(rep.getStream());
 			String orcid = this.getAttribute("orcid");
 			String token = this.getQueryValue("token");
-			((OrcidOAuthClient) getContext().getAttributes().get("OrcidOAuthClient")).appendWork(orcid, token, work);
+			orcidOAuthClient.appendWork(orcid, token, work);
 			this.setStatus(Status.SUCCESS_NO_CONTENT);
 		} catch (JAXBException e) {
 			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());

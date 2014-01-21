@@ -4,16 +4,25 @@ import org.restlet.Application;
 import org.restlet.Context;
 import org.restlet.Restlet;
 
-/** Boilerplate application
+import uk.bl.odin.orcid.guice.SelfInjectingServerResourceModule;
+
+import com.google.inject.Guice;
+
+/** Boilerplate application.  Initializes Router and GuiceModule.
  */
 public class RootApplication extends Application {
 
 	public RootApplication(Context context) {
 		super(context);
+
 	}
 
 	@Override
 	public Restlet createInboundRoot() {
+        Guice.createInjector(
+        		new RootGuiceModule(this.getContext()),
+                new SelfInjectingServerResourceModule()
+            );
 		return new RootRouter(this.getContext());
 	}
 

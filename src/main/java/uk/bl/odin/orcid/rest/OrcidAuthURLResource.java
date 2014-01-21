@@ -3,13 +3,18 @@ package uk.bl.odin.orcid.rest;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
 import uk.bl.odin.orcid.domain.OrcidOAuthClient;
+import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 
-public class OrcidAuthURLResource extends ServerResource {
+public class OrcidAuthURLResource extends SelfInjectingServerResource {
 
+	@Inject OrcidOAuthClient orcidOAuthClient;
+	
 	/**
 	 * Generates an authz request url to direct the user to ?redirect.true
 	 * bounces user with a http redirect.
@@ -19,7 +24,7 @@ public class OrcidAuthURLResource extends ServerResource {
 	@Get
 	public Map<String, String> getAuthzCodeRedirectURL() {
 		String ref = this.getAttribute("originalRef");
-		String url = ((OrcidOAuthClient) getContext().getAttributes().get("OrcidOAuthClient")).getAuthzCodeRequest(ref);
+		String url = orcidOAuthClient.getAuthzCodeRequest(ref);
 		if (this.getQueryValue("redirect") != null) {
 			this.redirectPermanent(url);
 			return null;

@@ -3,6 +3,9 @@ package uk.bl.odin.orcid.domain;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.restlet.Response;
 import org.restlet.data.Form;
 import org.restlet.data.MediaType;
@@ -29,7 +32,6 @@ public class OrcidOAuthClient {
 
 	private static final Logger log = Logger.getLogger(OrcidOAuthClient.class.getName());
 
-	// TODO: make this configurable
 	public static final String AUTHZ_ENDPOINT = "/oauth/authorize";
 	public static final String TOKEN_ENDPOINT = "/oauth/token";
 	public static final String WORK_CREATE_ENDPOINT = "/orcid-works";
@@ -52,7 +54,15 @@ public class OrcidOAuthClient {
 	public static final MediaType APPLICATION_ORCID_XML = MediaType.register("application/orcid+xml",
 			"application/orcid+xml");
 
-	public OrcidOAuthClient(String clientID, String clientSecret, String redirectUri, boolean sandbox) {
+	/** Suitable for injection or manual construction.  Thread safe.
+	 * 
+	 * @param clientID OAuth credential
+	 * @param clientSecret OAuth credential
+	 * @param redirectUri OAuth credential
+	 * @param sandbox if true use sandbox endpoints
+	 */
+	@Inject
+	public OrcidOAuthClient(@Named("OrcidClientID") String clientID, @Named("OrcidClientSecret") String clientSecret, @Named("OrcidReturnURI") String redirectUri, @Named("OrcidSandbox") boolean sandbox) {
 		if (clientID==null || clientSecret==null || redirectUri == null)
 			throw new IllegalArgumentException("cannot create OrcidOAuthClient - missing init parameter(s)");
 		if (sandbox) {
