@@ -20,8 +20,8 @@ You can see it in action at http://ethos-orcid.appspot.com/
 The application can be easily modified to support your work metadata of choice in a few steps:
 
 1. Implement the IsOrcidWorkProvider interface and return isOrcidWork instances.  It must be thread safe and have a no-arg constructor.  See EthosMetadataScraper (https://github.com/TomDemeranville/orcid-update-java/blob/master/src/main/java/uk/bl/odin/orcid/ethos/EthosMetaScraper.java) for an example.
-2. Rename web.xml.example to web.xml and enter your IsOrcidWorkProvider class name & ORCID credentials (see below).
-3. Modify the wording of index.jsp to reflect your use case. (this will be configurable soon)
+2. Rename web.xml.example to web.xml and modify it to use your IsOrcidWorkProvider class name & ORCID credentials.
+3. Modify message parameters (title etc) at the top of index.jsp. 
 
 ##Servlet Init params
 
