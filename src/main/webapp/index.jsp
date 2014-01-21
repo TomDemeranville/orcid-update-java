@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 	//VERY simple templating. YMMV.
-    final String title = "ORCID Import!!";
+    final String title = "ORCID Import (BETA)";
 	final String introline1 = "Export your E-Thesis from ETHOS and import it into ORCID";
 	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>)";
 	final String inputPlaceholder = "Example: uk.bl.ethos.398762";
