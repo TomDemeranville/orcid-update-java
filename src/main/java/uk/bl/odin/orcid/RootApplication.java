@@ -8,7 +8,8 @@ import uk.bl.odin.orcid.guice.SelfInjectingServerResourceModule;
 
 import com.google.inject.Guice;
 
-/** Boilerplate application.  Initializes Router and GuiceModule.
+/**
+ * Boilerplate application. Initializes Router and GuiceModule.
  */
 public class RootApplication extends Application {
 
@@ -19,10 +20,7 @@ public class RootApplication extends Application {
 
 	@Override
 	public Restlet createInboundRoot() {
-        Guice.createInjector(
-        		new RootGuiceModule(this.getContext()),
-                new SelfInjectingServerResourceModule()
-            );
+		Guice.createInjector(new RootGuiceModule(this.getContext()), new SelfInjectingServerResourceModule());
 		return new RootRouter(this.getContext());
 	}
 

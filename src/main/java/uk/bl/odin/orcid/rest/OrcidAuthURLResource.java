@@ -13,8 +13,9 @@ import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 
 public class OrcidAuthURLResource extends SelfInjectingServerResource {
 
-	@Inject OrcidOAuthClient orcidOAuthClient;
-	
+	@Inject
+	OrcidOAuthClient orcidOAuthClient;
+
 	/**
 	 * Generates an authz request url to direct the user to ?redirect.true
 	 * bounces user with a http redirect.

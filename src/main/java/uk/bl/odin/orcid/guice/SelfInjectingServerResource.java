@@ -7,10 +7,16 @@ import javax.inject.Inject;
 import org.restlet.resource.ServerResource;
 
 /**
- * Base class for ServerResources that do their own member injection.
- * Not available in maven.
- * @see http://tembrel.blogspot.co.uk/2012/03/restlet-guice-extension-considered.html
- * @see https://github.com/restlet/restlet-framework-java/blob/master/incubator/org.restlet.ext.guice/src/org/restlet/ext/guice/SelfInjectingServerResource.java
+ * Base class for ServerResources that do their own member injection. Not
+ * available in maven.
+ * 
+ * @see http
+ *      ://tembrel.blogspot.co.uk/2012/03/restlet-guice-extension-considered.
+ *      html
+ * @see https
+ *      ://github.com/restlet/restlet-framework-java/blob/master/incubator/org
+ *      .restlet
+ *      .ext.guice/src/org/restlet/ext/guice/SelfInjectingServerResource.java
  * @author Tembrel
  * 
  */

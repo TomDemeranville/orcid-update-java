@@ -26,7 +26,8 @@ import uk.bl.odin.schema.orcid.messages.onepointone.OrcidWorks;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/** General purpose ORCID client that supports simple OAuth scenarios
+/**
+ * General purpose ORCID client that supports simple OAuth scenarios
  */
 public class OrcidOAuthClient {
 
@@ -54,16 +55,22 @@ public class OrcidOAuthClient {
 	public static final MediaType APPLICATION_ORCID_XML = MediaType.register("application/orcid+xml",
 			"application/orcid+xml");
 
-	/** Suitable for injection or manual construction.  Thread safe.
+	/**
+	 * Suitable for injection or manual construction. Thread safe.
 	 * 
-	 * @param clientID OAuth credential
-	 * @param clientSecret OAuth credential
-	 * @param redirectUri OAuth credential
-	 * @param sandbox if true use sandbox endpoints
+	 * @param clientID
+	 *            OAuth credential
+	 * @param clientSecret
+	 *            OAuth credential
+	 * @param redirectUri
+	 *            OAuth credential
+	 * @param sandbox
+	 *            if true use sandbox endpoints
 	 */
 	@Inject
-	public OrcidOAuthClient(@Named("OrcidClientID") String clientID, @Named("OrcidClientSecret") String clientSecret, @Named("OrcidReturnURI") String redirectUri, @Named("OrcidSandbox") boolean sandbox) {
-		if (clientID==null || clientSecret==null || redirectUri == null)
+	public OrcidOAuthClient(@Named("OrcidClientID") String clientID, @Named("OrcidClientSecret") String clientSecret,
+			@Named("OrcidReturnURI") String redirectUri, @Named("OrcidSandbox") boolean sandbox) {
+		if (clientID == null || clientSecret == null || redirectUri == null)
 			throw new IllegalArgumentException("cannot create OrcidOAuthClient - missing init parameter(s)");
 		if (sandbox) {
 			this.loginUri = SANDBOX_LOGIN_URI;
@@ -79,7 +86,8 @@ public class OrcidOAuthClient {
 		this.redirectUri = redirectUri;
 	}
 
-	/** Create a URL that can be used to request an accessCode
+	/**
+	 * Create a URL that can be used to request an accessCode
 	 */
 	public String getAuthzCodeRequest(String originalRef) {
 		String req = loginUri + AUTHZ_ENDPOINT;
@@ -92,7 +100,8 @@ public class OrcidOAuthClient {
 		return req;
 	}
 
-	/** Exchange and authorization code for an auth token from ORCID
+	/**
+	 * Exchange and authorization code for an auth token from ORCID
 	 * 
 	 * @see http://support.orcid.org/knowledgebase/articles/120107
 	 * @see http 
@@ -123,7 +132,8 @@ public class OrcidOAuthClient {
 		return token;
 	}
 
-	/** Add a work to a users profile.
+	/**
+	 * Add a work to a users profile.
 	 * 
 	 * @see http 
 	 *      ://support.orcid.org/knowledgebase/articles/177528-add-works-technical
@@ -131,9 +141,12 @@ public class OrcidOAuthClient {
 	 * @see http
 	 *      ://support.orcid.org/knowledgebase/articles/171893-tutorial-add-
 	 *      works -with-curl
-	 * @param token a valid auth token
-	 * @param work a valid orcid work
-	 * @throws IOException if we can't write for any reason.
+	 * @param token
+	 *            a valid auth token
+	 * @param work
+	 *            a valid orcid work
+	 * @throws IOException
+	 *             if we can't write for any reason.
 	 */
 	public void appendWork(String orcid, String token, OrcidWork work) throws IOException {
 		Reference ref = new Reference(apiUriV11 + "/" + orcid + WORK_CREATE_ENDPOINT);
@@ -160,7 +173,8 @@ public class OrcidOAuthClient {
 		}
 	}
 
-	/** Wrap an OrcidWork inside an otherwise empty OrcidMessage
+	/**
+	 * Wrap an OrcidWork inside an otherwise empty OrcidMessage
 	 */
 	public static final OrcidMessage wrapWork(OrcidWork work) {
 		OrcidWorks works = new OrcidWorks();
@@ -175,7 +189,8 @@ public class OrcidOAuthClient {
 		return message;
 	}
 
-	/** Adds a HTTP header to a Restlet ClientResource OAUTH bearer is a pain via
+	/**
+	 * Adds a HTTP header to a Restlet ClientResource OAUTH bearer is a pain via
 	 * restlet on GAE, so we set it ourselves.
 	 */
 	public static final void addRestletHeader(ClientResource client, String key, String value) {

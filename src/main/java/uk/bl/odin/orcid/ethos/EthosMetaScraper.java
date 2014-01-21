@@ -11,7 +11,9 @@ import uk.bl.odin.orcid.domain.IsOrcidWorkProvider;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
-/** Simple scraper that extracts meta information from HTML pages fetched from ethos.bl.uk.
+/**
+ * Simple scraper that extracts meta information from HTML pages fetched from
+ * ethos.bl.uk.
  */
 public class EthosMetaScraper implements IsOrcidWorkProvider {
 

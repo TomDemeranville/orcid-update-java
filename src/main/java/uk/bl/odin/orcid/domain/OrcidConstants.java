@@ -1,6 +1,7 @@
 package uk.bl.odin.orcid.domain;
 
-/** ORCID message constants not defined in schema
+/**
+ * ORCID message constants not defined in schema
  */
 public class OrcidConstants {
 	public static String MESSAGE_VERSION = "1.1";

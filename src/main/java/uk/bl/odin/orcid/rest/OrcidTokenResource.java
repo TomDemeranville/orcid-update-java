@@ -15,8 +15,9 @@ import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 
 public class OrcidTokenResource extends SelfInjectingServerResource {
 
-	@Inject OrcidOAuthClient orcidOAuthClient;
-	
+	@Inject
+	OrcidOAuthClient orcidOAuthClient;
+
 	/**
 	 * This resource is hit by the return from a ORCID OAuth. returns Access
 	 * token to client along with state param.

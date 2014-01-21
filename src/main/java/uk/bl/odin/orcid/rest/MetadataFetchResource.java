@@ -18,8 +18,9 @@ import uk.bl.odin.schema.orcid.messages.onepointone.OrcidWork;
 
 public class MetadataFetchResource extends SelfInjectingServerResource {
 
-	@Inject IsOrcidWorkProvider orcidWorkProvider;
-	
+	@Inject
+	IsOrcidWorkProvider orcidWorkProvider;
+
 	/**
 	 * Fetches a metadata record and returns it as an XML OrcidWork. Requires
 	 * java 1.6 not 1.7 due to JAXB limitations on GAE.
