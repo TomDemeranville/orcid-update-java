@@ -71,6 +71,8 @@ Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be remov
 ##TODO:
 Externalise configuration for index.jsp
 
+Improve error handling - server vs client vs 404 errors
+
 Handle case where we're sent an authentication code but don't have an ethosID
 
 Handle refresh tokens properly
