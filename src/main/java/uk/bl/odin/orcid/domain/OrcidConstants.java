@@ -11,5 +11,6 @@ public class OrcidConstants {
 	public static String SEQUENCE_FIRST = "first";
 
 	// work types: http://support.orcid.org/knowledgebase/articles/118795
-
+	//http://support.orcid.org/knowledgebase/articles/118807
+	//handle is not a top level type!!!
 }

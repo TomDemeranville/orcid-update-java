@@ -72,9 +72,11 @@ public class ThesisMetadata implements IsOrcidWork {
 		for (String s : this.getIdentifiers()) {
 			WorkExternalIdentifier weEthos = new WorkExternalIdentifier();
 			weEthos.setWorkExternalIdentifierId(s);
+			//TODO: identify if we have a handle or doi or whatever.			
 			weEthos.setWorkExternalIdentifierType(OrcidConstants.IDENTIFIER_TYPE_OTHER);
 			wei.getWorkExternalIdentifier().add(weEthos);
 		}
+		work.setWorkExternalIdentifiers(wei);
 
 		Url url = new Url();
 		url.setValue(this.getUrl());

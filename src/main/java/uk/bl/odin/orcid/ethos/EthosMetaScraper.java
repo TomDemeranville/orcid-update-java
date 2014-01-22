@@ -22,6 +22,12 @@ public class EthosMetaScraper implements IsOrcidWorkProvider {
 	public static final Cache<String, ThesisMetadata> cache = CacheBuilder.newBuilder()
 			.expireAfterWrite(30, TimeUnit.MINUTES).maximumSize(100).build();
 
+	//TODO:
+	//DC.identifier not always present.
+	//sometimes it's <meta name="citation_abstract_html_url" content="http://hdl.handle.net/2381/8951" />
+	//<meta name="DC.identifier" content="http://hdl.handle.net/2381/8951" />
+
+	
 	/**
 	 * Scrape the DC metadata from the ETHOS HTML result.
 	 * 

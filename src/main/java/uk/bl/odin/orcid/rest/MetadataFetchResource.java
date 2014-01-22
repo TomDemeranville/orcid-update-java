@@ -22,21 +22,18 @@ public class MetadataFetchResource extends SelfInjectingServerResource {
 	IsOrcidWorkProvider orcidWorkProvider;
 
 	/**
-	 * Fetches a metadata record and returns it as an XML OrcidWork. Requires
-	 * java 1.6 not 1.7 due to JAXB limitations on GAE.
+	 * Fetches a metadata record and returns it as an XML OrcidWork. 
 	 */
 	@Get
-	public Representation getMetadataAsOrcidWork() throws JAXBException, IOException {
+	public Representation getMetadataAsOrcidWork() throws IOException {
 		try {
-			String id = this.getAttribute("id");
-			IsOrcidWork meta = orcidWorkProvider.fetch(id);
-			// TODO: do this manually. There are all sorts of JAXP security
-			// problems with JaxbRepresentaion on java 1.7
+			IsOrcidWork meta = orcidWorkProvider.fetch(this.getAttribute("id"));
+			// problems with JaxbRepresentaion on java 1.7 GAE?  fixed in GAE 1.8.1 +
 			return new JaxbRepresentation<OrcidWork>(meta.toOrcidWork());
 		} catch (IOException e) {
 			// TODO: make this fine grained - non existent, bad request and
 			// server error.
-			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, "problem fetching metadata " + e);
+			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, "problem fetching metadata " + e.getMessage());
 			throw e;
 		}
 	}
@@ -48,13 +45,14 @@ public class MetadataFetchResource extends SelfInjectingServerResource {
 	 * provider. This is useful for user confirmation etc.
 	 */
 	@Get("?json")
-	public IsOrcidWork getEthosMetadata() {
-		String id = this.getAttribute("id");
+	public IsOrcidWork getEthosMetadata() throws IOException{
 		try {
-			return orcidWorkProvider.fetch(id);
+			return orcidWorkProvider.fetch(this.getAttribute("id"));
 		} catch (IOException e) {
-			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, "problem fetching metadata");
-			return null;
+			// TODO: make this fine grained - non existent, bad request and
+			// server error.
+			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, "problem fetching metadata " + e.getMessage());
+			throw e;
 		}
 	}
 

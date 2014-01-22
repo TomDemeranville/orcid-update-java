@@ -36,16 +36,15 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 			JAXBContext jc = JAXBContext.newInstance(OrcidWork.class);
 			Unmarshaller um = jc.createUnmarshaller();
 			OrcidWork work = (OrcidWork) um.unmarshal(rep.getStream());
-			String orcid = this.getAttribute("orcid");
-			String token = this.getQueryValue("token");
-			orcidOAuthClient.appendWork(orcid, token, work);
+			orcidOAuthClient.appendWork(this.getAttribute("orcid"), this.getQueryValue("token"), work);
 			this.setStatus(Status.SUCCESS_NO_CONTENT);
 		} catch (JAXBException e) {
 			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
 		}
 
+		//TODO: test on GAE 1.8.1+
 		// the following fails on GAE due to missing JAXB security feature :(
-		// hence using manual jaxb above.
+		// hence using manual jaxb above. 
 		/*
 		 * JaxbRepresentation<OrcidWork> jaxbRep = new
 		 * JaxbRepresentation<OrcidWork>(rep, OrcidWork.class); OricdOAuthClient
