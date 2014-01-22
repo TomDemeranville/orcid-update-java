@@ -101,5 +101,38 @@ public class OrcidId {
 		}
 		return this.content;
 	}
+	
+	/** Manually added to bindings.  
+	 * @return first found path value
+	 */
+	public String getPath(){
+		for (JAXBElement<String> e :content){
+			if (e.getName().getLocalPart().equals("path"))
+					return e.getValue().toString();
+		}
+		return null;
+	}
+	
+	/** Manually added to bindings.  
+	 * @return first found uri value
+	 */
+	public String getUri(){
+		for (JAXBElement<String> e :content){
+			if (e.getName().getLocalPart().equals("uri"))
+					return e.getValue().toString();
+		}
+		return null;
+	}
+	
+	/** Manually added to bindings.  
+	 * @return first found host value
+	 */
+	public String getHost(){
+		for (JAXBElement<String> e :content){
+			if (e.getName().getLocalPart().equals("host"))
+					return e.getValue().toString();
+		}
+		return null;
+	}
 
 }
