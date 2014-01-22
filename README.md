@@ -69,7 +69,7 @@ RESTlet resources.  Handles incoming requests.
 Boilerplate Guice DI classes, taken from the RESTlet org.restlet.ext.guice incubator project.
 
 ###uk.bl.odin.schema.orcid.messages.onepointone
-JAXB generated XML bindings for the ORCID v1.1 xml message schema.  Generated with Java 1.6 and is JVM version specific.  For other JVM versions it may need regenerating.  Note GAE only supports Java 1.6.
+JAXB generated XML bindings for the ORCID v1.1 xml message schema.  Generated with Java 1.6 and is JVM version specific.  For other JVM versions it may need regenerating.  
 
 ##Other info
 Build based on GAE maven archetype
@@ -85,6 +85,9 @@ Handle case where we're sent an authentication code but don't yet have an ethosI
 Handle refresh tokens properly
 
 Anything else you feel like.  Pull requests welcome.
+
+Move to appengine 1.8.X and java 7...  this fixes the JAXBPermission.setDatatypeConverter issue
+. see https://code.google.com/p/googleappengine/wiki/SdkForJavaReleaseNotes
 
 ##Contact
 
