@@ -46,11 +46,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "orcidIdentifier", "orcidDeprecated", "orcidPreferences", "orcidHistory", "orcidBio",
+@XmlType(name = "", propOrder = { "orcid","orcidIdentifier", "orcidDeprecated", "orcidPreferences", "orcidHistory", "orcidBio",
 		"orcidActivities", "orcidInternal" })
 @XmlRootElement(name = "orcid-profile")
 public class OrcidProfile {
 
+	/*this is from the 1.0.X schema.  Hacked it in to workaround bug with orcid search API
+	 * note, also added to XmlType annotation
+	 */
+	@XmlElement(name = "orcid")
+	protected String orcid;
+	
 	@XmlElement(name = "orcid-identifier")
 	protected OrcidId orcidIdentifier;
 	@XmlElement(name = "orcid-deprecated")
@@ -284,6 +290,20 @@ public class OrcidProfile {
 	 */
 	public void setGroupType(GroupType value) {
 		this.groupType = value;
+	}
+
+	/** This is from the 1.0.X schema.  Hacked it in to workaround bug with orcid search API
+	 * note, also added to XmlType annotation
+	 */
+	public String getOrcid() {
+		return orcid;
+	}
+
+	/** This is from the 1.0.X schema.  Hacked it in to workaround bug with orcid search API
+	 * note, also added to XmlType annotation
+	 */
+	public void setOrcid(String orcid) {
+		this.orcid = orcid;
 	}
 
 }
