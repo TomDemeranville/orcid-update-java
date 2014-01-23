@@ -76,6 +76,9 @@ Build based on GAE maven archetype
 Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be removed from pom if not using ecplise)
 
 ##TODO:
+
+Split out Oricd Client and XML bindings into separate maven artifact.  Make this availble in public maven repository.
+
 Externalise configuration for index.jsp
 
 Improve error handling - server vs client vs 404 errors

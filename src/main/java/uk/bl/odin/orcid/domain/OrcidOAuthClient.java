@@ -52,8 +52,7 @@ public class OrcidOAuthClient {
 	private final String apiUriToken;
 	private final String apiUriV11;
 
-	public static final MediaType APPLICATION_ORCID_XML = MediaType.register("application/orcid+xml",
-			"application/orcid+xml");
+
 
 	/**
 	 * Suitable for injection or manual construction. Thread safe.
@@ -159,7 +158,7 @@ public class OrcidOAuthClient {
 		jax.setFormattedOutput(true);
 		// jax.setSchemaLocation("http://www.orcid.org/ns/orcid https://raw.github.com/ORCID/ORCID-Source/master/orcid-model/src/main/resources/orcid-message-1.1.xsd");
 		jax.setValidatingDtd(true);
-		jax.setMediaType(APPLICATION_ORCID_XML);
+		jax.setMediaType(OrcidConstants.APPLICATION_ORCID_XML);
 
 		try {
 			client.post(jax);
