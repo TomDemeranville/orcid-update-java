@@ -60,7 +60,7 @@ public class OrcidPublicClientTest {
 		String query = OrcidPublicClient.buildDOIQuery("10.6084/m9.figshare.909352");
 		assertEquals("digital-object-ids: \"10.6084/m9.figshare.909352\"",query);
 		OrcidSearchResults results = client.search(query);
-		assertEquals(1,results.getNumFound());
+		assertEquals(1,results.getNumFound().intValue());
 		assertEquals(results.getOrcidSearchResult().get(0).getOrcidProfile().getOrcidIdentifier().getPath(),"0000-0002-9151-6445");
 	}
 
