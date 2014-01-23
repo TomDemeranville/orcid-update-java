@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
-import uk.bl.odin.orcid.client.OrcidAuthScope;
 import uk.bl.odin.orcid.client.OrcidOAuthClient;
+import uk.bl.odin.orcid.client.constants.OrcidAuthScope;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 
 public class OrcidAuthURLResource extends SelfInjectingServerResource {

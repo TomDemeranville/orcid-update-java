@@ -3,9 +3,9 @@ package uk.bl.odin.orcid.ethos;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.bl.odin.orcid.client.OrcidConstants;
-import uk.bl.odin.orcid.client.OrcidExternalIdentifier;
-import uk.bl.odin.orcid.client.OrcidWorkIdentifierType;
+import uk.bl.odin.orcid.client.constants.OrcidConstants;
+import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifier;
+import uk.bl.odin.orcid.client.constants.OrcidWorkIdentifier;
 import uk.bl.odin.orcid.domain.BibtexBuilder;
 import uk.bl.odin.orcid.domain.IsOrcidWork;
 import uk.bl.odin.orcid.schema.messages.onepointone.Citation;
@@ -61,7 +61,7 @@ public class ThesisMetadata implements IsOrcidWork {
 		citation.setWorkCitationType(CitationType.BIBTEX);
 		work.setWorkCitation(citation);
 
-		work.setWorkType(OrcidWorkIdentifierType.DISSERTATION.toString());
+		work.setWorkType(OrcidWorkIdentifier.DISSERTATION.toString());
 
 		PublicationDate publicationDate = new PublicationDate();
 		Year year = new Year();
