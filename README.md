@@ -83,7 +83,7 @@ Externalise configuration for index.jsp
 
 Improve error handling - server vs client vs 404 errors
 
-Handle case where we're sent an authentication code but don't yet have an ethosID
+Add helpers for OrcidPublicClient
 
 Handle refresh tokens properly
 
