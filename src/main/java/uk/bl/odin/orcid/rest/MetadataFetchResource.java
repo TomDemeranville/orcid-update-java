@@ -14,7 +14,7 @@ import org.restlet.resource.ServerResource;
 import uk.bl.odin.orcid.domain.IsOrcidWork;
 import uk.bl.odin.orcid.domain.IsOrcidWorkProvider;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
-import uk.bl.odin.schema.orcid.messages.onepointone.OrcidWork;
+import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
 
 public class MetadataFetchResource extends SelfInjectingServerResource {
 

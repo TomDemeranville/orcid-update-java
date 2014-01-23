@@ -3,23 +3,25 @@ package uk.bl.odin.orcid.ethos;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.bl.odin.orcid.client.OrcidConstants;
+import uk.bl.odin.orcid.client.OrcidExternalIdentifier;
+import uk.bl.odin.orcid.client.OrcidWorkIdentifierType;
 import uk.bl.odin.orcid.domain.BibtexBuilder;
 import uk.bl.odin.orcid.domain.IsOrcidWork;
-import uk.bl.odin.orcid.domain.OrcidConstants;
-import uk.bl.odin.schema.orcid.messages.onepointone.Citation;
-import uk.bl.odin.schema.orcid.messages.onepointone.CitationType;
-import uk.bl.odin.schema.orcid.messages.onepointone.Contributor;
-import uk.bl.odin.schema.orcid.messages.onepointone.ContributorAttributes;
-import uk.bl.odin.schema.orcid.messages.onepointone.CreditName;
-import uk.bl.odin.schema.orcid.messages.onepointone.OrcidWork;
-import uk.bl.odin.schema.orcid.messages.onepointone.PublicationDate;
-import uk.bl.odin.schema.orcid.messages.onepointone.Url;
-import uk.bl.odin.schema.orcid.messages.onepointone.Visibility;
-import uk.bl.odin.schema.orcid.messages.onepointone.WorkContributors;
-import uk.bl.odin.schema.orcid.messages.onepointone.WorkExternalIdentifier;
-import uk.bl.odin.schema.orcid.messages.onepointone.WorkExternalIdentifiers;
-import uk.bl.odin.schema.orcid.messages.onepointone.WorkTitle;
-import uk.bl.odin.schema.orcid.messages.onepointone.Year;
+import uk.bl.odin.orcid.schema.messages.onepointone.Citation;
+import uk.bl.odin.orcid.schema.messages.onepointone.CitationType;
+import uk.bl.odin.orcid.schema.messages.onepointone.Contributor;
+import uk.bl.odin.orcid.schema.messages.onepointone.ContributorAttributes;
+import uk.bl.odin.orcid.schema.messages.onepointone.CreditName;
+import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
+import uk.bl.odin.orcid.schema.messages.onepointone.PublicationDate;
+import uk.bl.odin.orcid.schema.messages.onepointone.Url;
+import uk.bl.odin.orcid.schema.messages.onepointone.Visibility;
+import uk.bl.odin.orcid.schema.messages.onepointone.WorkContributors;
+import uk.bl.odin.orcid.schema.messages.onepointone.WorkExternalIdentifier;
+import uk.bl.odin.orcid.schema.messages.onepointone.WorkExternalIdentifiers;
+import uk.bl.odin.orcid.schema.messages.onepointone.WorkTitle;
+import uk.bl.odin.orcid.schema.messages.onepointone.Year;
 
 /**
  * Models the DC metadata we can extract from ETHOS HTML meta tags and
@@ -59,7 +61,7 @@ public class ThesisMetadata implements IsOrcidWork {
 		citation.setWorkCitationType(CitationType.BIBTEX);
 		work.setWorkCitation(citation);
 
-		work.setWorkType(OrcidConstants.WORK_TYPE_DISSERTATION);
+		work.setWorkType(OrcidWorkIdentifierType.DISSERTATION.toString());
 
 		PublicationDate publicationDate = new PublicationDate();
 		Year year = new Year();
@@ -73,7 +75,7 @@ public class ThesisMetadata implements IsOrcidWork {
 			WorkExternalIdentifier weEthos = new WorkExternalIdentifier();
 			weEthos.setWorkExternalIdentifierId(s);
 			//TODO: identify if we have a handle or doi or whatever.			
-			weEthos.setWorkExternalIdentifierType(OrcidConstants.IDENTIFIER_TYPE_OTHER);
+			weEthos.setWorkExternalIdentifierType(OrcidExternalIdentifier.OTHER_ID.toString());
 			wei.getWorkExternalIdentifier().add(weEthos);
 		}
 		work.setWorkExternalIdentifiers(wei);

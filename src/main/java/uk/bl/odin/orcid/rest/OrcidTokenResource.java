@@ -9,8 +9,8 @@ import org.restlet.resource.Get;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 
-import uk.bl.odin.orcid.domain.OrcidAccessTokenResponse;
-import uk.bl.odin.orcid.domain.OrcidOAuthClient;
+import uk.bl.odin.orcid.client.OrcidAccessTokenResponse;
+import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 
 public class OrcidTokenResource extends SelfInjectingServerResource {

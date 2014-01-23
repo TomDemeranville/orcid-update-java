@@ -5,8 +5,8 @@ import java.util.logging.Logger;
 
 import org.restlet.Context;
 
+import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.domain.IsOrcidWorkProvider;
-import uk.bl.odin.orcid.domain.OrcidOAuthClient;
 import uk.bl.odin.orcid.ethos.EthosMetaScraper;
 
 import com.google.appengine.repackaged.org.joda.time.tz.Provider;

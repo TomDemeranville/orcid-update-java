@@ -4,7 +4,9 @@ This is a java based application can log users in via ORCID OAuth and push new w
 
 It uses RESTlet on the server side and JQuery/Bootstrap on the client side.  It will work within GAE or a simple servlet container.
 
-You can see it in action at (http://ethos-orcid.appspot.com/)
+The ORCiD client library is available at (https://github.com/TomDemeranville/orcid-java-client)
+
+You can see the full application in action at (http://ethos-orcid.appspot.com/)
 
 ##User Journey
 
@@ -76,6 +78,8 @@ Build based on GAE maven archetype
 Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be removed from pom if not using ecplise)
 
 ##TODO:
+
+Create Unit tests that perform a round trip login?  Or at least mock one.
 
 Split out Oricd Client and XML bindings into separate maven artifact.  Make this availble in public maven repository.
 

@@ -12,9 +12,9 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.Post;
 import org.restlet.resource.ServerResource;
 
-import uk.bl.odin.orcid.domain.OrcidOAuthClient;
+import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
-import uk.bl.odin.schema.orcid.messages.onepointone.OrcidWork;
+import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
 
 public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 

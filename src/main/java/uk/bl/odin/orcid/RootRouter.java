@@ -7,8 +7,8 @@ import org.restlet.resource.Directory;
 import org.restlet.routing.Filter;
 import org.restlet.routing.Router;
 
+import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.domain.IsOrcidWorkProvider;
-import uk.bl.odin.orcid.domain.OrcidOAuthClient;
 import uk.bl.odin.orcid.rest.CacheFilter;
 import uk.bl.odin.orcid.rest.MetadataFetchResource;
 import uk.bl.odin.orcid.rest.OrcidAuthURLResource;
