@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.bl.odin.orcid.client.constants.OrcidConstants;
+import uk.bl.odin.orcid.client.constants.OrcidContributorRole;
+import uk.bl.odin.orcid.client.constants.OrcidContributorSequence;
 import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifierType;
 import uk.bl.odin.orcid.client.constants.OrcidWorkType;
 import uk.bl.odin.orcid.domain.BibtexBuilder;
@@ -93,8 +95,8 @@ public class ThesisMetadata implements IsOrcidWork {
 		name.setValue(this.getCreator());
 		contributor.setCreditName(name);
 		ContributorAttributes attributes = new ContributorAttributes();
-		attributes.setContributorRole(OrcidConstants.ROLE_AUTHOR);
-		attributes.setContributorSequence(OrcidConstants.SEQUENCE_FIRST);
+		attributes.setContributorRole(OrcidContributorRole.AUTHOR.toString());
+		attributes.setContributorSequence(OrcidContributorSequence.FIRST.toString());
 		contributor.setContributorAttributes(attributes);
 		contributors.getContributor().add(contributor);
 		work.setWorkContributors(contributors);
