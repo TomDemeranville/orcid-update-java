@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.bl.odin.orcid.client.constants.OrcidConstants;
-import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifier;
-import uk.bl.odin.orcid.client.constants.OrcidWorkIdentifier;
+import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifierType;
+import uk.bl.odin.orcid.client.constants.OrcidWorkType;
 import uk.bl.odin.orcid.domain.BibtexBuilder;
 import uk.bl.odin.orcid.domain.IsOrcidWork;
 import uk.bl.odin.orcid.schema.messages.onepointone.Citation;
@@ -61,7 +61,7 @@ public class ThesisMetadata implements IsOrcidWork {
 		citation.setWorkCitationType(CitationType.BIBTEX);
 		work.setWorkCitation(citation);
 
-		work.setWorkType(OrcidWorkIdentifier.DISSERTATION.toString());
+		work.setWorkType(OrcidWorkType.DISSERTAION.toString());
 
 		PublicationDate publicationDate = new PublicationDate();
 		Year year = new Year();
@@ -74,8 +74,8 @@ public class ThesisMetadata implements IsOrcidWork {
 		for (String s : this.getIdentifiers()) {
 			WorkExternalIdentifier weEthos = new WorkExternalIdentifier();
 			weEthos.setWorkExternalIdentifierId(s);
-			//TODO: identify if we have a handle or doi or whatever.			
-			weEthos.setWorkExternalIdentifierType(OrcidExternalIdentifier.OTHER_ID.toString());
+			// TODO: identify if we have a handle or doi or whatever.
+			weEthos.setWorkExternalIdentifierType(OrcidExternalIdentifierType.OTHER_ID.toString());
 			wei.getWorkExternalIdentifier().add(weEthos);
 		}
 		work.setWorkExternalIdentifiers(wei);

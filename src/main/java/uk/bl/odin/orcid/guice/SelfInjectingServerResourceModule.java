@@ -13,7 +13,7 @@ import com.google.inject.Provides;
  * 
  * Incubator code. Not available in maven
  * 
- * @see https
+ * @see https 
  *      ://github.com/restlet/restlet-framework-java/blob/master/incubator/org
  *      .restlet
  *      .ext.guice/src/org/restlet/ext/guice/SelfInjectingServerResourceModule

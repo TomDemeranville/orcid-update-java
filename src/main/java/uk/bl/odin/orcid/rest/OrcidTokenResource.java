@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.restlet.data.Status;
 import org.restlet.resource.Get;
 import org.restlet.resource.ResourceException;
-import org.restlet.resource.ServerResource;
 
 import uk.bl.odin.orcid.client.OrcidAccessTokenResponse;
 import uk.bl.odin.orcid.client.OrcidOAuthClient;

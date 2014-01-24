@@ -13,7 +13,7 @@ import org.restlet.resource.ServerResource;
  * @see http
  *      ://tembrel.blogspot.co.uk/2012/03/restlet-guice-extension-considered.
  *      html
- * @see https
+ * @see https 
  *      ://github.com/restlet/restlet-framework-java/blob/master/incubator/org
  *      .restlet
  *      .ext.guice/src/org/restlet/ext/guice/SelfInjectingServerResource.java

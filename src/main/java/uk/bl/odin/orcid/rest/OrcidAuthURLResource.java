@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.restlet.resource.Get;
-import org.restlet.resource.ServerResource;
 
 import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.client.constants.OrcidAuthScope;
@@ -26,7 +25,7 @@ public class OrcidAuthURLResource extends SelfInjectingServerResource {
 	@Get
 	public Map<String, String> getAuthzCodeRedirectURL() {
 		String ref = this.getAttribute("originalRef");
-		String url = orcidOAuthClient.getAuthzCodeRequest(ref,OrcidAuthScope.CREATE_WORKS);
+		String url = orcidOAuthClient.getAuthzCodeRequest(ref, OrcidAuthScope.CREATE_WORKS);
 		if (this.getQueryValue("redirect") != null) {
 			this.redirectPermanent(url);
 			return null;

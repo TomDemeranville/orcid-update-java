@@ -10,7 +10,6 @@ import javax.xml.bind.Unmarshaller;
 import org.restlet.data.Status;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Post;
-import org.restlet.resource.ServerResource;
 
 import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
@@ -42,9 +41,9 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
 		}
 
-		//TODO: test on GAE 1.8.1+
+		// TODO: test on GAE 1.8.1+
 		// the following fails on GAE due to missing JAXB security feature :(
-		// hence using manual jaxb above. 
+		// hence using manual jaxb above.
 		/*
 		 * JaxbRepresentation<OrcidWork> jaxbRep = new
 		 * JaxbRepresentation<OrcidWork>(rep, OrcidWork.class); OricdOAuthClient
