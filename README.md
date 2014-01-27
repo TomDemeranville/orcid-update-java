@@ -70,9 +70,6 @@ RESTlet resources.  Handles incoming requests.
 ###uk.bl.odin.orcid.guice
 Boilerplate Guice DI classes, taken from the RESTlet org.restlet.ext.guice incubator project.
 
-###uk.bl.odin.schema.orcid.messages.onepointone
-JAXB generated XML bindings for the ORCID v1.1 xml message schema.  
-
 ##Other info
 Build based on GAE maven archetype
 Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be removed from pom if not using ecplise)
@@ -81,13 +78,9 @@ Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be remov
 
 Create Unit tests that perform a round trip login?  Or at least mock one. Maybe use HTMLUnit. [example for google oauth](http://sumeet70.wordpress.com/2013/03/04/google-oauth-and-junit/)
 
-Split out Oricd Client and XML bindings into separate maven artifact.  Make this availble in public maven repository.
-
 Externalise configuration for index.jsp
 
 Improve error handling - server vs client vs 404 errors
-
-Add helpers for OrcidPublicClient
 
 Handle refresh tokens properly
 

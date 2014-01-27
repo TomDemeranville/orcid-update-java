@@ -8,7 +8,7 @@ import org.restlet.data.Status;
 import org.restlet.resource.Get;
 import org.restlet.resource.ResourceException;
 
-import uk.bl.odin.orcid.client.OrcidAccessTokenResponse;
+import uk.bl.odin.orcid.client.OrcidAccessToken;
 import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 
@@ -22,10 +22,10 @@ public class OrcidTokenResource extends SelfInjectingServerResource {
 	 * token to client along with state param.
 	 */
 	@Get
-	public OrcidAccessTokenResponse getTokenResponse() {
+	public OrcidAccessToken getTokenResponse() {
 		String code = this.getQueryValue("code");
 		try {
-			OrcidAccessTokenResponse token = orcidOAuthClient.getAccessToken(code);
+			OrcidAccessToken token = orcidOAuthClient.getAccessToken(code);
 			String ref = this.getQueryValue("state");
 			token.setState(ref);
 			return token;

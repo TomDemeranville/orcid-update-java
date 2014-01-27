@@ -11,6 +11,7 @@ import org.restlet.data.Status;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Post;
 
+import uk.bl.odin.orcid.client.OrcidAccessToken;
 import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
@@ -35,7 +36,10 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 			JAXBContext jc = JAXBContext.newInstance(OrcidWork.class);
 			Unmarshaller um = jc.createUnmarshaller();
 			OrcidWork work = (OrcidWork) um.unmarshal(rep.getStream());
-			orcidOAuthClient.appendWork(this.getAttribute("orcid"), this.getQueryValue("token"), work);
+			OrcidAccessToken token = new OrcidAccessToken();
+			token.setOrcid(this.getAttribute("orcid"));
+			token.setAccess_token(this.getQueryValue("token"));
+			orcidOAuthClient.appendWork(token, work);
 			this.setStatus(Status.SUCCESS_NO_CONTENT);
 		} catch (JAXBException e) {
 			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
