@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 	//VERY simple templating. YMMV.
-    final String title = "ORCID Import (BETA)";
+    final String title = "ORCID Thesis Import";
 	final String introline1 = "Export your E-Thesis from ETHOS and import it into ORCID";
 	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>)";
 	final String inputPlaceholder = "Example: uk.bl.ethos.398762";
@@ -36,7 +36,7 @@
           <a class="navbar-brand" href="#"><%= title %></a>
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Add Work</a></li>
-            <li><a href="/search">Explore Orcid</a></li>
+            <li><a href="/search">Datacentre reporting</a></li>
           </ul>
         </div>
       </div>

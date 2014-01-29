@@ -91,7 +91,7 @@ public class OrcidDataCentreReportResource extends SelfInjectingServerResource{
 		}
 		
 		SearchType type = SearchType.PREFIX;
-		if (getQueryValue("searchype")!=null){
+		if (getQueryValue("searchtype")!=null){
 			try{
 				type = SearchType.fromString(getQueryValue("searchtype"));
 			}catch(IllegalArgumentException e){

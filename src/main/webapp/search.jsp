@@ -30,9 +30,9 @@
 	        <div class="navbar-header">
 		        <a class="navbar-brand" href="#"><%= title %><span class='glyphicon glyphicon-tranfer'></span></a>
 	          <ul class="nav navbar-nav">
-	            <!-- <li><a href="/">Add Work</a></li>  -->
-	            <li class="active"><a href="#">Explore Orcid</a></li>
-	            <li><a href="javascript:$('#helpModal').modal('show')">Help</a></li>
+            <li><a href="/">Add Work</a></li>
+            <li class="active"><a href="/search">Datacentre reporting</a></li>
+	        <li><a href="javascript:$('#helpModal').modal('show')">Help</a></li>
 	          </ul>
 	        </div>
 	</div>
@@ -98,15 +98,27 @@
 		                      { "mData": "name","sTitle":"name","bSortable": "false" },
 		                      //{ "mData": "orcid","sTitle":"orcid","bSortable": "false" },
 		                      { "mData": "link","sTitle":"orcid","bSortable": "false" }
-		                  ]
-		                 
+		                  ],
+		         "oSearch": {"sSearch": "10."}            
 		        
 		    } );
+
+		 //three character minimum search
+		 $('.dataTables_filter input')
+		    .unbind('keypress keyup')
+		    .bind('keypress keyup', function(e){
+		      if ($(this).val().length < 2 && e.keyCode != 13) return;
+		      oTable.fnFilter($(this).val());
+		    });
+
+		//TODO: export as CSV
+		 
 		 //style the input elements see http://datatables.net/forums/discussion/comment/52857
 		 $('#orcidtable_length label select').addClass('form-control');
 		 $('#orcidtable_filter label input').addClass('form-control');
 		 $('.dataTables_filter input').attr('placeholder', 'Example: 10.9998 or uk.bl');
 
+		 //TODO: fetch the list from /identifiers/external
 		 //create a drop down for id type
 		 $('<select></select>')
 			.attr("id", "idtype")
@@ -121,6 +133,7 @@
 	        .addClass('form-control')
 	        .appendTo($('#orcidtable_filter'));
 
+		 //TODO: fetch the list from /identifiers/searchtype
 		 //create a drop down for search type
 		 $('<select></select>')
 			.attr("id", "prefix")
