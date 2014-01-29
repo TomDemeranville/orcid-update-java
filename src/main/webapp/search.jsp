@@ -52,6 +52,7 @@
 	      <div class="modal-body">
 	        <p>This tool enables you to lookup ORCiD users by their work DOIs.</p>
 	        <p>Enter a complete DOI (e.g. "10.9998/abc123") or DOI prefix (e.g."10.9998/") in the search box to see the ORCiDs that have one or more registered works with that DOI.</p>
+	        <p>You can change the identifier type to search and how to match it using the drop-downs.</p> 
 	        <!-- button type="button" data-dismiss="modal" onClick="javascript:">Try Me</button> -->
 	      </div>
 	      <div class="modal-footer">
@@ -78,14 +79,20 @@
  -->
 <script>
 	//STARTUP CODE
+	var oTable; // our handle on the datatable
+	var idType = "doi";
+	var matchType = "prefix";
+	
 	$(function() {
 		//$('#orciddiv').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="orcidtable"></table>');
-		 $('#orcidtable').dataTable( {
+		 oTable = $('#orcidtable').dataTable( {
 		        "bProcessing": true,
 		        "bServerSide": true,
 		        "sAjaxSource": "/api/report/datatable",
 		        "fnServerParams": function ( aoData ) {
-		            aoData.push( { "searchtype": "prefix", "idtype":"other-id" } );
+			        //this is called every request!
+		            aoData.push( {"name":"searchtype", "value":matchType} );
+		            aoData.push( {"name":"idtype","value":idType });
 		        },
 		        "aoColumns": [
 		                      { "mData": "name","sTitle":"name","bSortable": "false" },
@@ -98,7 +105,35 @@
 		 //style the input elements see http://datatables.net/forums/discussion/comment/52857
 		 $('#orcidtable_length label select').addClass('form-control');
 		 $('#orcidtable_filter label input').addClass('form-control');
-		 //$('#orcidtable_filter label').contents().unwrap();
+		 $('.dataTables_filter input').attr('placeholder', 'Example: 10.9998 or uk.bl');
+
+		 //create a drop down for id type
+		 $('<select></select>')
+			.attr("id", "idtype")
+	        .append('<option value="doi">DOI</option>')
+	        .append('<option value="isbn">ISBN</option>')
+	        .append('<option value="other-id">Other ID</option>')
+	        .on("change", function(){
+		        idType = this.value;
+		        oTable.fnClearTable(0);
+		        oTable.fnDraw();
+	        })
+	        .addClass('form-control')
+	        .appendTo($('#orcidtable_filter'));
+
+		 //create a drop down for search type
+		 $('<select></select>')
+			.attr("id", "prefix")
+	        .append('<option value="prefix">Prefix Match</option>')
+	        .append('<option value="exact">Exact Match</option>')
+	        .append('<option value="solr">Solr Syntax</option>')
+	        .on("change", function(){
+		        matchType = this.value;
+		        oTable.fnClearTable(0);
+		        oTable.fnDraw();
+	        })
+	        .addClass('form-control')
+	        .appendTo($('#orcidtable_filter'));
 	});
 	</script>
 </body>
