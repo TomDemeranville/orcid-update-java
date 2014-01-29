@@ -93,6 +93,7 @@
 	</div>
 	
 	<div class="footer">
+	  <hr/>
 	  <p>Provided by <a href="http://bl.uk/">The British Library</a> as part of the <a href="http://odin-project.eu/">ODIN project</a>.</p>
 	  <p>Source code available on <a href="https://github.com/TomDemeranville/orcid-update-java">GitHub</a>. Questions to <a href="http://twitter.com/tomdemeranville">@tomdemeranville</a>.</p>
 	</div>

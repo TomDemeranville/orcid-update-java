@@ -1,6 +1,7 @@
 package uk.bl.odin.orcid.rest;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.xml.bind.JAXBContext;
@@ -18,6 +19,8 @@ import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
 
 public class OrcidWorkCreationResource extends SelfInjectingServerResource {
+
+	private static final Logger log = Logger.getLogger(OrcidWorkCreationResource.class.getName());
 
 	@Inject
 	OrcidOAuthClient orcidOAuthClient;
@@ -56,11 +59,11 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 			orcidOAuthClient.appendWork(token, work);
 			this.setStatus(Status.SUCCESS_NO_CONTENT);
 		} catch (JAXBException e) {
-			this.setStatus(Status.SERVER_ERROR_INTERNAL, e.getMessage());
+			this.setStatus(Status.SERVER_ERROR_INTERNAL, e);
 		} catch (ResourceException e) {
-			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
+			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e);
 		} catch (IOException e) {
-			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e.getMessage());
+			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e);			
 		}
 
 		// TODO: test on GAE 1.8.1+

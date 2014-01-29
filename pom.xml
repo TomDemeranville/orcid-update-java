@@ -38,7 +38,7 @@
 	<dependency>
 		<groupId>uk.bl</groupId>
 		<artifactId>orcid-java-client</artifactId>
-		<version>0.11.4</version>
+		<version>0.11.5-rc1</version>
 	</dependency>
 	
 	<dependency>

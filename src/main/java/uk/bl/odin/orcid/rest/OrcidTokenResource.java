@@ -1,6 +1,7 @@
 package uk.bl.odin.orcid.rest;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.xml.bind.JAXBException;
@@ -15,6 +16,9 @@ import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 
 public class OrcidTokenResource extends SelfInjectingServerResource {
 
+	@SuppressWarnings("unused")
+	private static final Logger log = Logger.getLogger(OrcidTokenResource.class.getName());
+	
 	@Inject
 	OrcidOAuthClient orcidOAuthClient;
 
@@ -31,9 +35,13 @@ public class OrcidTokenResource extends SelfInjectingServerResource {
 			token.setState(ref);
 			return token;
 		} catch (ResourceException e) {
-			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
+			if (e.getStatus().isServerError())
+				this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY,e);
+			else
+				this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e);
+			log.info("Resource exception"+e.getMessage());
 		} catch (IOException e) {
-			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e.getMessage());
+			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e);
 		} 
 		return null;
 	}

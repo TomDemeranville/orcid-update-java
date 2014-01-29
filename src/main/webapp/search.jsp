@@ -53,6 +53,7 @@
 	        <p>This tool enables you to lookup ORCiD users by their work DOIs.</p>
 	        <p>Enter a complete DOI (e.g. "10.9998/abc123") or DOI prefix (e.g."10.9998/") in the search box to see the ORCiDs that have one or more registered works with that DOI.</p>
 	        <p>You can change the identifier type to search and how to match it using the drop-downs.</p> 
+	        <p><i>Example: Choose "Other ID" as the identifier type and enter "uk.bl" in the search box to see all Ethos e-theses</i></p>
 	        <!-- button type="button" data-dismiss="modal" onClick="javascript:">Try Me</button> -->
 	      </div>
 	      <div class="modal-footer">
