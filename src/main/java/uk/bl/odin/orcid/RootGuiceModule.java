@@ -1,11 +1,14 @@
 package uk.bl.odin.orcid;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.restlet.Context;
 
 import uk.bl.odin.orcid.client.OrcidOAuthClient;
+import uk.bl.odin.orcid.client.OrcidPublicClient;
+import uk.bl.odin.orcid.domain.CacheManager;
 import uk.bl.odin.orcid.domain.IsOrcidWorkProvider;
 
 import com.google.inject.AbstractModule;
@@ -26,6 +29,9 @@ public class RootGuiceModule extends AbstractModule {
 	public static final String CONFIG_KEY_OrcidReturnURI = "OrcidReturnURI";
 	public static final String CONFIG_KEY_OrcidSandbox = "OrcidSandbox";
 	public static final String CONFIG_KEY_OrcidWorkProvider = "OrcidWorkProvider";
+
+	public static final String CONFIG_KEY_CacheTimeout = "OrcidCacheTimeout";
+	public static final String CONFIG_KEY_CacheMaxsize = "OrcidCacheMaxsize";
 
 	public RootGuiceModule(Context context) {
 		super();
@@ -52,7 +58,7 @@ public class RootGuiceModule extends AbstractModule {
 	 */
 	@Override
 	protected void configure() {
-		// validate comnfiguration
+		// validate OAuth configuration
 		if (context.getParameters().getFirst(CONFIG_KEY_OrcidClientID) == null
 				|| context.getParameters().getFirst(CONFIG_KEY_OrcidClientSecret) == null
 				|| context.getParameters().getFirst(CONFIG_KEY_OrcidReturnURI) == null
@@ -64,6 +70,8 @@ public class RootGuiceModule extends AbstractModule {
 			log.severe("Init params are:  " + context.getParameters().toString());
 			throw new IllegalStateException("cannot create OrcidWorkProvier - missing init parameter");
 		}
+		
+		//Resolve OrcidWork provider 
 		IsOrcidWorkProvider provider;
 		try {
 			provider = (IsOrcidWorkProvider) Class.forName(
@@ -86,8 +94,14 @@ public class RootGuiceModule extends AbstractModule {
 		bind(Boolean.class).annotatedWith(Names.named(CONFIG_KEY_OrcidSandbox)).toInstance(
 				Boolean.valueOf(context.getParameters().getFirst(CONFIG_KEY_OrcidSandbox).getValue().toString()));
 
-		// bind configuration
+		//TODO: - put in external config?
+		bind(Integer.class).annotatedWith(Names.named(CONFIG_KEY_CacheTimeout)).toInstance(30);
+		bind(Integer.class).annotatedWith(Names.named(CONFIG_KEY_CacheMaxsize)).toInstance(1000);
+		
+		// bind dependencies
 		bind(OrcidOAuthClient.class).asEagerSingleton();
+		bind(OrcidPublicClient.class).asEagerSingleton();
+		bind(CacheManager.class).asEagerSingleton();
 		bind(IsOrcidWorkProvider.class).to(provider.getClass());
 	}
 

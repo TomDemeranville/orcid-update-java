@@ -3,6 +3,7 @@ package uk.bl.odin.orcid.rest;
 import java.io.IOException;
 
 import javax.inject.Inject;
+import javax.xml.bind.JAXBException;
 
 import org.restlet.data.Status;
 import org.restlet.ext.jaxb.JaxbRepresentation;
@@ -22,16 +23,14 @@ public class MetadataFetchResource extends SelfInjectingServerResource {
 	/**
 	 * Fetches a metadata record and returns it as an XML OrcidWork.
 	 */
-	@Get
-	public Representation getMetadataAsOrcidWork() throws IOException {
+	@Get("xml")
+	public Representation getMetadataAsOrcidWork() {
 		try {
 			IsOrcidWork meta = orcidWorkProvider.fetch(this.getAttribute("id"));
 			return new JaxbRepresentation<OrcidWork>(meta.toOrcidWork());
 		} catch (IOException e) {
-			// TODO: make this fine grained - non existent, bad request and
-			// server error.
-			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, "problem fetching metadata " + e.getMessage());
-			throw e;
+			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e.getMessage());
+			return null;
 		}
 	}
 

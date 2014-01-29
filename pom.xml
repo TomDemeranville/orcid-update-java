@@ -14,7 +14,7 @@
            <name>Public online Restlet repository</name>
            <url>http://maven.restlet.org</url>
         </repository>
-        
+	    
 	<repository>
         <id>orcid-java-client-mvn-repo</id>
         <url>http://raw.github.com/TomDemeranville/orcid-java-client/mvn-repo/</url>
@@ -23,6 +23,7 @@
             <updatePolicy>always</updatePolicy>
         </snapshots>
     </repository>
+
     </repositories>
     
     <properties>
@@ -37,7 +38,7 @@
 	<dependency>
 		<groupId>uk.bl</groupId>
 		<artifactId>orcid-java-client</artifactId>
-		<version>0.11.2</version>
+		<version>0.11.4</version>
 	</dependency>
 	
 	<dependency>
@@ -112,6 +113,19 @@
     <artifactId>respond</artifactId>
     <version>1.3.0</version>
     </dependency>
+    
+    <dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>datatables</artifactId>
+	    <version>1.9.4-2</version>
+	</dependency>
+
+	<!--  http://datatables.net/plug-ins/ includes bootstrap style pagination -->
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>datatables-plugins</artifactId>
+	    <version>ca6ec50</version>
+	</dependency>
     
     <dependency>
     <groupId>com.google.guava</groupId>

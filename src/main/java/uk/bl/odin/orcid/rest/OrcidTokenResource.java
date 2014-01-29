@@ -3,6 +3,7 @@ package uk.bl.odin.orcid.rest;
 import java.io.IOException;
 
 import javax.inject.Inject;
+import javax.xml.bind.JAXBException;
 
 import org.restlet.data.Status;
 import org.restlet.resource.Get;
@@ -21,7 +22,7 @@ public class OrcidTokenResource extends SelfInjectingServerResource {
 	 * This resource is hit by the return from a ORCID OAuth. returns Access
 	 * token to client along with state param.
 	 */
-	@Get
+	@Get("json")
 	public OrcidAccessToken getTokenResponse() {
 		String code = this.getQueryValue("code");
 		try {
@@ -30,10 +31,10 @@ public class OrcidTokenResource extends SelfInjectingServerResource {
 			token.setState(ref);
 			return token;
 		} catch (ResourceException e) {
-			setStatus(Status.CLIENT_ERROR_BAD_REQUEST, "token invalid, cannot resolve token");
+			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
 		} catch (IOException e) {
-			setStatus(Status.SERVER_ERROR_INTERNAL, "problem resolving token " + e.getMessage());
-		}
+			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e.getMessage());
+		} 
 		return null;
 	}
 }

@@ -24,11 +24,24 @@
 
 </head>
 <body>
-
+    
+    
 <!-- Page that initiated ORCID oauth login and receives auth code -->
 <!-- Fetches auth token from server, fetches OrcidWork from server, then posts both back to perform profile update-->
 <div class="container" >
 
+	<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><%= title %></a>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Add Work</a></li>
+            <li><a href="/search">Explore Orcid</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
 	<div class="jumbotron" id="fetch" style="display:none">
 	  <h1><%= title %> <span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <p class="lead" id="welcome"><%= introline1 %></p>

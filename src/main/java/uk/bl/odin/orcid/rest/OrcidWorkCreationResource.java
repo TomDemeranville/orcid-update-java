@@ -10,6 +10,7 @@ import javax.xml.bind.Unmarshaller;
 import org.restlet.data.Status;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Post;
+import org.restlet.resource.ResourceException;
 
 import uk.bl.odin.orcid.client.OrcidAccessToken;
 import uk.bl.odin.orcid.client.OrcidOAuthClient;
@@ -21,6 +22,20 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 	@Inject
 	OrcidOAuthClient orcidOAuthClient;
 
+	private static JAXBContext orcidWorkJAXBContext;// = JAXBContext.newInstance(OrcidWork.class);
+	
+	@Override
+	public void doInit(){
+		super.doInit();
+		if (orcidWorkJAXBContext==null){
+			try {
+				orcidWorkJAXBContext = JAXBContext.newInstance(OrcidWork.class);
+			} catch (JAXBException e) {
+				this.setStatus(Status.SERVER_ERROR_INTERNAL,e.getMessage());
+			}
+		}
+	}
+	
 	/**
 	 * Accepts an XML encoded ORCID work. POSTs work to ORCID as a new work.
 	 * Requires ?token= query param containing ORCID auth token.
@@ -31,10 +46,9 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 	 *             if we can't append. (TODO: handle properly)
 	 */
 	@Post
-	public void addWork(Representation rep) throws IOException {
+	public void addWork(Representation rep) {
 		try {
-			JAXBContext jc = JAXBContext.newInstance(OrcidWork.class);
-			Unmarshaller um = jc.createUnmarshaller();
+			Unmarshaller um = orcidWorkJAXBContext.createUnmarshaller();
 			OrcidWork work = (OrcidWork) um.unmarshal(rep.getStream());
 			OrcidAccessToken token = new OrcidAccessToken();
 			token.setOrcid(this.getAttribute("orcid"));
@@ -42,7 +56,11 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 			orcidOAuthClient.appendWork(token, work);
 			this.setStatus(Status.SUCCESS_NO_CONTENT);
 		} catch (JAXBException e) {
+			this.setStatus(Status.SERVER_ERROR_INTERNAL, e.getMessage());
+		} catch (ResourceException e) {
 			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
+		} catch (IOException e) {
+			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e.getMessage());
 		}
 
 		// TODO: test on GAE 1.8.1+

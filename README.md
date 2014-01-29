@@ -1,12 +1,18 @@
 #Orcid Profile Updater
 
-This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos (http://ethos.bl.uk), but is easily customizable for use with other metadata providers.  It's BETA as-is software.
+This is a java based application can log users in via ORCID OAuth and push new works into their profiles.  It was built to work with a British Library service called Ethos (http://ethos.bl.uk), but is easily customizable for use with other metadata providers.  
 
 It uses RESTlet on the server side and JQuery/Bootstrap on the client side.  It will work within GAE or a simple servlet container.
 
 The ORCiD client library is available at (https://github.com/TomDemeranville/orcid-java-client)
 
 You can see the full application in action at (http://ethos-orcid.appspot.com/)
+
+##NEW!! Built in reporting for datacentres
+
+Datacentres can now lookup ORCiD users that have regitered their DOIs or other identifiers.
+
+I'll make an example live soon
 
 ##User Journey
 
@@ -53,6 +59,12 @@ It'll also play nicely in tomcat or jetty as a standard WAR file.
 * `/meta/{id}` fetch metadata from external source - use `?json` for raw form (note this is an implementation specific form, not a JSON form of ORCID metadata)
 * `/webjars` webjars endpoint - example: `/webjars/bootstrap/3.0.3/css/bootstrap.min.css` also includes JQuery 1.9.0
 
+* `/orcid/search` simple interface to ORCiD search API
+* `/orcid/{orcid}` fetch an ORCiD profile
+* `/identifier/{type}` fetch lists of valid identifiers - external, worktype, searchfield, searchtype 
+
+* `/report/datatable` endpoint that provides datatable.net compatible reverse lookup of DOIs
+
 ##Packages
 
 ###uk.bl.odin.orcid
@@ -67,6 +79,9 @@ Example `isOrcidWorkProvider`.  Fetches metadata from ethos.bl.uk and transforms
 ###uk.bl.odin.orcid.rest
 RESTlet resources.  Handles incoming requests.
 
+###uk.bl.odin.orcid.rest.report
+Datacentre reporting RESTlet resources.  
+
 ###uk.bl.odin.orcid.guice
 Boilerplate Guice DI classes, taken from the RESTlet org.restlet.ext.guice incubator project.
 
@@ -80,11 +95,11 @@ Create Unit tests that perform a round trip login?  Or at least mock one. Maybe 
 
 Externalise configuration for index.jsp
 
-Improve error handling - server vs client vs 404 errors
-
 Handle refresh tokens properly
 
 Anything else you feel like.  Pull requests welcome.
+
+Add other identifiers to DOI search
 
 ##Contact
 
