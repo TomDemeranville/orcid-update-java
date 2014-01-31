@@ -93,8 +93,6 @@ Requires: Google Eclipse Plugin, Maven2 Eclipse plugin. (these can both be remov
 
 ##TODO:
 
-Create Unit tests that perform a round trip login?  Or at least mock one. Maybe use HTMLUnit. [example for google oauth](http://sumeet70.wordpress.com/2013/03/04/google-oauth-and-junit/)
-
 Externalise configuration for index.jsp
 
 Handle refresh tokens properly
