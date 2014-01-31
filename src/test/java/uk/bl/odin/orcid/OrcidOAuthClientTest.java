@@ -22,7 +22,7 @@ import uk.bl.odin.orcid.client.constants.OrcidAuthScope;
 /** Does round trip log in and update profile using supplied constants.
  * requires: https://sites.google.com/a/chromium.org/chromedriver/getting-started 
  * 
- * Requires configuration in testoauth.properties
+ * Requires configuration in testoauth.properties and service to be available at the orcidReturnUri
  * 
  * @author tom
  *
