@@ -41,7 +41,7 @@ public class OrcidOAuthClientTest {
 
 	@SuppressWarnings("restriction")
 	@Test
-	public void testGoogleSearch() throws InterruptedException, JAXBException {
+	public void testLoginAndUpdate() throws InterruptedException, JAXBException {
 		OrcidOAuthClient client = new OrcidOAuthClient(properties.getProperty("orcidClientID"), properties.getProperty("orcidClientSecret"), properties.getProperty("orcidReturnUri"), Boolean.valueOf(properties.getProperty("orcidSandbox")));
 		String authzreq = client.getAuthzCodeRequest(properties.getProperty("orcidWorkIdentifier"), OrcidAuthScope.CREATE_WORKS);		
 		
