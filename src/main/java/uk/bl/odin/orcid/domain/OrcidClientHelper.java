@@ -1,7 +1,6 @@
 package uk.bl.odin.orcid.domain;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import uk.bl.odin.orcid.client.constants.OrcidWorkType;

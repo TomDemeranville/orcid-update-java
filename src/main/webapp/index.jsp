@@ -69,13 +69,13 @@
 		  <p>ORCID: <b id="orcid"></b></p>	  
 		  <p class="lead">Title: <b id="work2"></b></p>
 	  </div>
-	  <p><button onClick="orcidapp.updateProfile();" class="btn btn-lg btn-primary">Update my profile <img src="/spin.gif" style="display:none" id="spin2"/></button></p>	  
+	  <p><button id="updateButton" onClick="orcidapp.updateProfile();" class="btn btn-lg btn-primary">Update my profile <img src="/spin.gif" style="display:none" id="spin2"/></button></p>	  
 	</div>
 
 	<div class="jumbotron" id="finish" style="display:none">
 	  <h1><%= title %><span class="glyphicon glyphicon-cloud-upload"></span></h1>
 	  <p class="lead">Congratulations. Job done!</p>
-	  <p><a class="btn btn-lg btn-primary" href="https://orcid.org/my-orcid" role="button" onClick="orcidapp.goToOrcid()">View my updated ORCID profile</span></a></p>        
+	  <p><a id="doneButton" class="btn btn-lg btn-primary" href="https://orcid.org/my-orcid" role="button" onClick="orcidapp.goToOrcid()">View my updated ORCID profile</span></a></p>        
 	</div>
 	
 	<div class="jumbotron" id="error" style="display:none">

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
-import javax.xml.bind.JAXBException;
 
 import org.restlet.data.Status;
 import org.restlet.resource.Get;
@@ -16,7 +15,6 @@ import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 
 public class OrcidTokenResource extends SelfInjectingServerResource {
 
-	@SuppressWarnings("unused")
 	private static final Logger log = Logger.getLogger(OrcidTokenResource.class.getName());
 	
 	@Inject

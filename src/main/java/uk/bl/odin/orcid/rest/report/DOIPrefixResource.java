@@ -2,7 +2,6 @@ package uk.bl.odin.orcid.rest.report;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -10,13 +9,11 @@ import org.restlet.ext.jackson.JacksonRepresentation;
 import org.restlet.representation.Representation;
 import org.restlet.resource.Get;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.guava.GuavaModule;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-
 import uk.bl.odin.orcid.doi.DOIPrefixMapper;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
+
+import com.fasterxml.jackson.datatype.guava.GuavaModule;
+import com.google.common.collect.ImmutableMultimap;
 
 public class DOIPrefixResource extends SelfInjectingServerResource{
 
@@ -35,7 +32,6 @@ public class DOIPrefixResource extends SelfInjectingServerResource{
 			for (String s: mapper.getPublisherMap().keySet()){
 				list.add(new TypeaheadJSBean(s,mapper.getPublisherMap().get(s)));
 			}
-			//return new JacksonRepresentation<ImmutableMap<String,String>>(mapper.getPublisherMap());
 			return new JacksonRepresentation<List<TypeaheadJSBean>>(list);
 		}
 	}

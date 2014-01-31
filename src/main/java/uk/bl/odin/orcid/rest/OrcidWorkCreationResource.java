@@ -20,6 +20,7 @@ import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
 
 public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 
+	@SuppressWarnings("unused")
 	private static final Logger log = Logger.getLogger(OrcidWorkCreationResource.class.getName());
 
 	@Inject

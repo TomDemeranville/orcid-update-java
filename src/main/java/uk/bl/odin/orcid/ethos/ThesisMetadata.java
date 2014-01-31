@@ -3,7 +3,6 @@ package uk.bl.odin.orcid.ethos;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.bl.odin.orcid.client.constants.OrcidConstants;
 import uk.bl.odin.orcid.client.constants.OrcidContributorRole;
 import uk.bl.odin.orcid.client.constants.OrcidContributorSequence;
 import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifierType;

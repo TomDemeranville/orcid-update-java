@@ -3,7 +3,6 @@ package uk.bl.odin.orcid.rest;
 import java.io.IOException;
 
 import javax.inject.Inject;
-import javax.xml.bind.JAXBException;
 
 import org.restlet.data.Status;
 import org.restlet.ext.jaxb.JaxbRepresentation;

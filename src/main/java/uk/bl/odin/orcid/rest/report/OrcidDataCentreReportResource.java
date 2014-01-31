@@ -49,6 +49,7 @@ import com.google.common.base.Joiner;
  */
 public class OrcidDataCentreReportResource extends SelfInjectingServerResource{
 	
+	@SuppressWarnings("unused")
 	private static final Logger log = Logger.getLogger(OrcidDataCentreReportResource.class.getName());
 
 	@Inject
