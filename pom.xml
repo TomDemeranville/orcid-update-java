@@ -52,6 +52,12 @@
   <artifactId>jackson-databind</artifactId>
   <version>2.1.0</version>
 	</dependency>
+	
+	<dependency>
+  <groupId>com.fasterxml.jackson.datatype</groupId>
+  <artifactId>jackson-datatype-guava</artifactId>
+  <version>2.1.0</version>
+</dependency>
   
 	  <!-- jsoup HTML parser library @ http://jsoup.org/ -->
 	<dependency>
@@ -126,6 +132,12 @@
 	    <artifactId>datatables-plugins</artifactId>
 	    <version>ca6ec50</version>
 	</dependency>
+	
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>typeaheadjs</artifactId>
+	    <version>0.9.3</version>
+	</dependency>
     
     <dependency>
     <groupId>com.google.guava</groupId>
@@ -136,7 +148,7 @@
 	<dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.11</version>
       <scope>test</scope>
     </dependency>
     

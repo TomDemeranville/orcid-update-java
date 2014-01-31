@@ -15,6 +15,7 @@ import uk.bl.odin.orcid.rest.OrcidProfileResource;
 import uk.bl.odin.orcid.rest.OrcidSearchResource;
 import uk.bl.odin.orcid.rest.OrcidTokenResource;
 import uk.bl.odin.orcid.rest.OrcidWorkCreationResource;
+import uk.bl.odin.orcid.rest.report.DOIPrefixResource;
 import uk.bl.odin.orcid.rest.report.OrcidDataCentreReportResource;
 
 /**
@@ -61,6 +62,7 @@ public class RootRouter extends Router {
 
 		//reporting rest routes
 		this.attach("/report/datatable", OrcidDataCentreReportResource.class);
+		this.attach("/doi/prefix", DOIPrefixResource.class);
 		//identifier enumerations
 		this.attach("/identifier/{type}", OrcidIdentifierResource.class);
 		

@@ -17,10 +17,8 @@
     
     <!-- fetch our maven managed css dependencies -->
     <link rel='stylesheet' href='/api/webjars/bootstrap/3.0.3/css/bootstrap.min.css' />
-	<!-- 
-	<link rel='stylesheet' href='/api/webjars/datatables/1.9.4/media/css/jquery.dataTables.css' />
-	 -->
 	<link rel='stylesheet' href='/api/webjars/datatables-plugins/ca6ec50/integration/bootstrap/3/dataTables.bootstrap.css' />
+    <link rel='stylesheet' href='/typeahead-bootstrap.css' />
 </head>
 <body>
 
@@ -47,12 +45,14 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="myModalLabel">Help</h4>
+	        <h4 class="modal-title" id="myModalLabel">Lookup ORCiD users by their work DOIs</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p>This tool enables you to lookup ORCiD users by their work DOIs.</p>
-	        <p>Enter a complete DOI (e.g. "10.9998/abc123") or DOI prefix (e.g."10.9998/") in the search box to see the ORCiDs that have one or more registered works with that DOI.</p>
-	        <p>You can change the identifier type to search and how to match it using the drop-downs.</p> 
+	        <p>To search by publisher, start typing the publisher name into the publisher search box.</p>
+	        <p><i>Example: British Hydrological Society</i></p>
+	        <hr/>	        
+	        <p>To search by identifier, enter a complete DOI (e.g. "10.9998/abc123") or DOI prefix (e.g."10.9998/") in the search box.
+	        You can change the identifier type to search and how to match it using the drop-downs.</p> 
 	        <p><i>Example: Choose "Other ID" as the identifier type and enter "uk.bl" in the search box to see all Ethos e-theses</i></p>
 	        <!-- button type="button" data-dismiss="modal" onClick="javascript:">Try Me</button> -->
 	      </div>
@@ -75,6 +75,7 @@
 <script src="/api/webjars/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="/api/webjars/datatables/1.9.4/media/js/jquery.dataTables.min.js"></script>
 <script src="/api/webjars/datatables-plugins/ca6ec50/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script src="/api/webjars/typeaheadjs/0.9.3/typeahead.min.js"></script>
 <!-- 
 <script src="/api/webjars/datatables-plugins/ca6ec50/pagination/bootstrap.js"></script>
  -->
@@ -85,8 +86,11 @@
 	var matchType = "prefix";
 	
 	$(function() {
-		//$('#orciddiv').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="orcidtable"></table>');
 		 oTable = $('#orcidtable').dataTable( {
+		        "sDom":
+	                "r<'row'<'col-md-4'<'publishers'>><'col-md-4'f><'col-md-4'<'extra'>>>"+
+	                "t"+
+	                "<'row'<'col-xs-6'i><'col-xs-6'p>>",
 		        "bProcessing": true,
 		        "bServerSide": true,
 		        "sAjaxSource": "/api/report/datatable",
@@ -100,7 +104,12 @@
 		                      //{ "mData": "orcid","sTitle":"orcid","bSortable": "false" },
 		                      { "mData": "link","sTitle":"orcid","bSortable": "false" }
 		                  ],
-		         "oSearch": {"sSearch": "10."}            
+                "oLanguage": { "sSearch": "","sZeroRecords":"There are no ORCiDs to display." },
+                "iDeferLoading": [ 0, 0 ],
+                "bDeferLoading":true,
+                "bSort":false,
+                //"bStateSave":true
+		         //"oSearch": {"sSearch": "10."}            
 		        
 		    } );
 
@@ -117,7 +126,7 @@
 		 //style the input elements see http://datatables.net/forums/discussion/comment/52857
 		 $('#orcidtable_length label select').addClass('form-control');
 		 $('#orcidtable_filter label input').addClass('form-control');
-		 $('.dataTables_filter input').attr('placeholder', 'Example: 10.9998 or uk.bl');
+		 var searchBox =  $('.dataTables_filter input').attr('placeholder', 'ID search: 10.9998 or uk.bl');
 
 		 //TODO: fetch the list from /identifiers/external
 		 //create a drop down for id type
@@ -129,10 +138,11 @@
 	        .on("change", function(){
 		        idType = this.value;
 		        oTable.fnClearTable(0);
-		        oTable.fnDraw();
+		        searchBox.keydown();
+        	    searchBox.keyup();
 	        })
 	        .addClass('form-control')
-	        .appendTo($('#orcidtable_filter'));
+	        .appendTo($('.extra'));
 
 		 //TODO: fetch the list from /identifiers/searchtype
 		 //create a drop down for search type
@@ -144,10 +154,36 @@
 	        .on("change", function(){
 		        matchType = this.value;
 		        oTable.fnClearTable(0);
-		        oTable.fnDraw();
+		        searchBox.keydown();
+        	    searchBox.keyup();
+		        //oTable.fnDraw();
 	        })
 	        .addClass('form-control')
-	        .appendTo($('#orcidtable_filter'));
+	        .appendTo($('.extra'));
+
+		 //publisher typeahead
+		$('<input></input>')
+		 .attr("id", "publishers")
+		 .addClass('form-control')
+		 .addClass('typeahead')
+		 .attr('placeholder', 'Publisher search:')
+		 .appendTo($('.publishers'));
+		 $('#publishers')
+		 .typeahead([
+             {
+               name: 'publishers3',
+               prefetch: '/api/doi/prefix'
+             }
+           ]).on('typeahead:selected', function (obj, datum) {
+        	    console.log(obj);
+        	    console.log(datum);
+        	    searchBox.val(datum.name);
+        	    $('#idtype').val("doi");
+        	    searchBox.keydown();
+        	    searchBox.keyup();
+        	});
+		 $('.tt-hint').addClass('form-control');
+          
 	});
 	</script>
 </body>
