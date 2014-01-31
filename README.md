@@ -8,11 +8,9 @@ The ORCiD client library is available at (https://github.com/TomDemeranville/orc
 
 You can see the full application in action at (http://ethos-orcid.appspot.com/)
 
-##NEW!! Built in reporting for datacentres
+##NEW!! Built in reporting for publishers & datacentres
 
-Datacentres can now lookup ORCiD users that have regitered their DOIs or other identifiers.
-
-I'll make an example live soon
+Datacentres can now lookup ORCiD users that have regitered their DOIs or other identifiers.  You can look up by DOI, DOI prefix or publisher name.  See (http://ethos-orcid.appspot.com/search)
 
 ##User Journey
 
@@ -64,6 +62,7 @@ It'll also play nicely in tomcat or jetty as a standard WAR file.
 * `/identifier/{type}` fetch lists of valid identifiers - external, worktype, searchfield, searchtype 
 
 * `/report/datatable` endpoint that provides datatable.net compatible reverse lookup of DOIs
+* `/doi/prefix` lookup for DOI prefix-> publisher names
 
 ##Packages
 
@@ -84,6 +83,9 @@ Datacentre reporting RESTlet resources.
 
 ###uk.bl.odin.orcid.guice
 Boilerplate Guice DI classes, taken from the RESTlet org.restlet.ext.guice incubator project.
+
+###uk.bl.odin.orcid.doi
+Lookup for DOI prefixes -> publishers
 
 ##Other info
 Build based on GAE maven archetype
