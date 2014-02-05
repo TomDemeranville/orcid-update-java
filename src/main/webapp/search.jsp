@@ -172,12 +172,12 @@
 		 .typeahead([
              {
                name: 'publishers2',
-               header: '<h3>Publishers</h3>',
+               header: '<h4>Publishers</h4>',
                prefetch: '/api/doiprefix/publishers'
              },
              {
                  name: 'datacentres',
-                 header: '<h3>Datacentres</h3>',
+                 header: '<h4>Datacentres</h4>',
                  prefetch: '/api/doiprefix/datacentres'
                }
            ]).on('typeahead:selected', function (obj, datum) {

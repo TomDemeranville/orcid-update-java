@@ -35,7 +35,6 @@ public class OrcidOAuthClientTest {
 	@Before
 	public void before() throws IOException {
 		properties.load(getClass().getResourceAsStream("testoauth.properties"));
-		System.out.print(properties);
 	}
 
 	/**
