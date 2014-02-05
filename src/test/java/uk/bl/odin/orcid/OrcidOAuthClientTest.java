@@ -27,7 +27,6 @@ import uk.bl.odin.orcid.client.constants.OrcidAuthScope;
  * @author tom
  *
  */
-//
 public class OrcidOAuthClientTest {
 	
 	
@@ -39,8 +38,17 @@ public class OrcidOAuthClientTest {
 		 System.out.print(properties);
 	}
 
+	/** This test relies on your hosts file/whatever redirecting the return URI to where your app resides.
+	 * Your app must be running.
+	 * e.g something like this in your hosts:
+	 * 127.0.0.1 ethos-orcid.appspot.com
+	 * and a simple proxy pointing port 80->8080
+	 *  
+	 * @throws InterruptedException
+	 * @throws JAXBException
+	 */
 	@SuppressWarnings("restriction")
-	@Test
+	//@Test
 	public void testLoginAndUpdate() throws InterruptedException, JAXBException {
 		OrcidOAuthClient client = new OrcidOAuthClient(properties.getProperty("orcidClientID"), properties.getProperty("orcidClientSecret"), properties.getProperty("orcidReturnUri"), Boolean.valueOf(properties.getProperty("orcidSandbox")));
 		String authzreq = client.getAuthzCodeRequest(properties.getProperty("orcidWorkIdentifier"), OrcidAuthScope.CREATE_WORKS);		

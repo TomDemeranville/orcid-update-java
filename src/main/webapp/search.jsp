@@ -171,13 +171,19 @@
 		 $('#publishers')
 		 .typeahead([
              {
-               name: 'publishers3',
-               prefetch: '/api/doi/prefix'
-             }
+               name: 'publishers2',
+               header: '<h3>Publishers</h3>',
+               prefetch: '/api/doiprefix/publishers'
+             },
+             {
+                 name: 'datacentres',
+                 header: '<h3>Datacentres</h3>',
+                 prefetch: '/api/doiprefix/datacentres'
+               }
            ]).on('typeahead:selected', function (obj, datum) {
         	    console.log(obj);
         	    console.log(datum);
-        	    searchBox.val(datum.name);
+        	    searchBox.val(datum.doi);
         	    $('#idtype').val("doi");
         	    searchBox.keydown();
         	    searchBox.keyup();

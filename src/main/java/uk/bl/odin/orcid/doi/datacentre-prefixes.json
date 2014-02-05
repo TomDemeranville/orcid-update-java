@@ -1,0 +1,622 @@
+[
+  {
+    "prefixes": [
+      "10.1594"
+    ],
+    "datacentre": "TIB.PANGAEA - PANGAEA - Publishing Network for Geoscientific and Environmental Data"
+  },
+  {
+    "prefixes": [
+      "10.5169"
+    ],
+    "datacentre": "ETHZ.SEALS - Retro Seals - Digitalisierte Zeitschriften"
+  },
+  {
+    "prefixes": [
+      "10.6068"
+    ],
+    "datacentre": "CDL.DPLANET - Data-Planet"
+  },
+  {
+    "prefixes": [
+      "10.3932"
+    ],
+    "datacentre": "ETHZ.EPICS-BA - E-Pics Bildarchiv"
+  },
+  {
+    "prefixes": [
+      "10.12764"
+    ],
+    "datacentre": "GESIS.DIE - Deutsches Institut für Erwachsenenbildung "
+  },
+  {
+    "prefixes": [
+      "10.6084"
+    ],
+    "datacentre": "CDL.DIGSCI - Digital Science"
+  },
+  {
+    "prefixes": [
+      "10.6085"
+    ],
+    "datacentre": "CDL.PISCO - Partnership for Interdisciplinary Studies of Coastal Oceans (PISCO)"
+  },
+  {
+    "prefixes": [
+      "10.6073"
+    ],
+    "datacentre": "CDL.LTERNET - Long Term Ecological Research (LTER) Network"
+  },
+  {
+    "prefixes": [
+      "10.5167"
+    ],
+    "datacentre": "ETHZ.ZORA - Universität Zürich, ZORA"
+  },
+  {
+    "prefixes": [
+      "10.5883"
+    ],
+    "datacentre": "CISTI.BOLD - Biodiversity Institute of Ontario"
+  },
+  {
+    "prefixes": [
+      "10.3929"
+    ],
+    "datacentre": "ETHZ.E-COLL - ETH E-Collection"
+  },
+  {
+    "prefixes": [
+      "10.1594"
+    ],
+    "datacentre": "TIB.ESR - European Society of Radiology"
+  },
+  {
+    "prefixes": [
+      "10.2314",
+      "10.2311"
+    ],
+    "datacentre": "TIB.TIB - TIB Hannover"
+  },
+  {
+    "prefixes": [
+      "10.3205"
+    ],
+    "datacentre": "ZBMED.GMS - German Medical Science"
+  },
+  {
+    "prefixes": [
+      "10.6067"
+    ],
+    "datacentre": "CDL.DIGANT - Digital Antiquity"
+  },
+  {
+    "prefixes": [
+      "10.5284"
+    ],
+    "datacentre": "BL.ADS - Archaeology Data Service"
+  },
+  {
+    "prefixes": [
+      "10.3886"
+    ],
+    "datacentre": "GESIS.ICPSR - ICPSR"
+  },
+  {
+    "prefixes": [
+      "10.3931"
+    ],
+    "datacentre": "ETHZ.E-RARA - e-rara.ch"
+  },
+  {
+    "prefixes": [
+      "10.7299"
+    ],
+    "datacentre": "CDL.UCBMVZ - UC Berkeley Museum of Vertebrate Zoology"
+  },
+  {
+    "prefixes": [
+      "10.7891"
+    ],
+    "datacentre": "ETHZ.E-MANUS - e-manuscripta"
+  },
+  {
+    "prefixes": [
+      "10.5061"
+    ],
+    "datacentre": "CDL.DRYAD - Dryad"
+  },
+  {
+    "prefixes": [
+      "10.5060"
+    ],
+    "datacentre": "CDL.CDL - California Digital Library"
+  },
+  {
+    "prefixes": [
+      "10.5287"
+    ],
+    "datacentre": "BL.OXDB - Oxford University Library Service Databank"
+  },
+  {
+    "prefixes": [
+      "10.3203",
+      "10.5446"
+    ],
+    "datacentre": "TIB.KMO - TIB KMO / FLOWWORKS GmbH"
+  },
+  {
+    "prefixes": [
+      "10.3932",
+      "10.5169",
+      "10.5076",
+      "10.5167",
+      "10.3931",
+      "10.3929",
+      "10.7891",
+      "10.5075",
+      "10.5451",
+      "10.12682",
+      "10.5449",
+      "10.7890"
+    ],
+    "datacentre": "ETHZ.UNKNOWN - not assigned to a specific ETHZ datacentre"
+  },
+  {
+    "prefixes": [
+      "10.7890"
+    ],
+    "datacentre": "ETHZ.EPICS-AD - E-Pics Alte und Seltene Drucke"
+  },
+  {
+    "prefixes": [
+      "10.5063"
+    ],
+    "datacentre": "CDL.NCEAS - National Center for Ecological Analysis and Synthesis (NCEAS)"
+  },
+  {
+    "prefixes": [
+      "10.4229"
+    ],
+    "datacentre": "TIB.WIP - WIP - Renewable Energies"
+  },
+  {
+    "prefixes": [
+      "10.5075"
+    ],
+    "datacentre": "ETHZ.EPFL - EPFL Infoscience"
+  },
+  {
+    "prefixes": [
+      "10.4232"
+    ],
+    "datacentre": "GESIS.ARCHIV - GESIS Data Archive"
+  },
+  {
+    "prefixes": [
+      "10.5255"
+    ],
+    "datacentre": "BL.UKDA - UK Data Archive"
+  },
+  {
+    "prefixes": [
+      "10.6092"
+    ],
+    "datacentre": "CRUI.UNIBO - Università degli Studi di Bologna"
+  },
+  {
+    "prefixes": [
+      "10.13130",
+      "10.6092"
+    ],
+    "datacentre": "CRUI.UNIMI - Università degli Studi di Milano"
+  },
+  {
+    "prefixes": [
+      "10.7908"
+    ],
+    "datacentre": "CDL.BROAD - Broad Institute of MIT and Harvard"
+  },
+  {
+    "prefixes": [
+      "10.5880",
+      "10.1594",
+      "10.14470"
+    ],
+    "datacentre": "TIB.GFZ - Geoforschungszentrum Potsdam"
+  },
+  {
+    "prefixes": [
+      "10.6100"
+    ],
+    "datacentre": "DELFT.TUE - TU Eindhoven"
+  },
+  {
+    "prefixes": [
+      "10.2312"
+    ],
+    "datacentre": "TIB.AWI - Alfred-Wegener-Institut"
+  },
+  {
+    "prefixes": [
+      "10.2312"
+    ],
+    "datacentre": "TIB.EUGRAPH - Eurographics"
+  },
+  {
+    "prefixes": [
+      "10.1285"
+    ],
+    "datacentre": "CRUI.UNILE - Università del Salento"
+  },
+  {
+    "prefixes": [
+      "10.4126"
+    ],
+    "datacentre": "ZBMED.ELLINET - ElliNET"
+  },
+  {
+    "prefixes": [
+      "10.4121"
+    ],
+    "datacentre": "DELFT.DATACENT - 3TU Datacentrum"
+  },
+  {
+    "prefixes": [
+      "10.4227"
+    ],
+    "datacentre": "ANDS.CENTRE11 - University of Sydney Library"
+  },
+  {
+    "prefixes": [
+      "10.1594"
+    ],
+    "datacentre": "TIB.LDEO - LDEO - Lamont-Doherty Earth Observatory, Columbia University"
+  },
+  {
+    "prefixes": [
+      "10.4231",
+      "10.5967"
+    ],
+    "datacentre": "PURDUE.EZID - Purdue University"
+  },
+  {
+    "prefixes": [
+      "10.3334"
+    ],
+    "datacentre": "CDL.ORNL - Oak Ridge National Laboratory Distributed Active Archive Center (ORNL DAAC)"
+  },
+  {
+    "prefixes": [
+      "10.1594",
+      "10.2312"
+    ],
+    "datacentre": "TIB.WDCC - World Data Center for Climate"
+  },
+  {
+    "prefixes": [
+      "10.11588"
+    ],
+    "datacentre": "GESIS.UBHD - UBHD"
+  },
+  {
+    "prefixes": [
+      "10.4122"
+    ],
+    "datacentre": "DK.DTIC - DTIC Datacenter"
+  },
+  {
+    "prefixes": [
+      "10.4230"
+    ],
+    "datacentre": "TIB.DAGST - Dagstuhl"
+  },
+  {
+    "prefixes": [
+      "10.4224"
+    ],
+    "datacentre": "CISTI.NRC - National Research Council"
+  },
+  {
+    "prefixes": [
+      "10.5451"
+    ],
+    "datacentre": "ETHZ.UNIBAS - edoc - University Library of Basel"
+  },
+  {
+    "prefixes": [
+      "10.5071"
+    ],
+    "datacentre": "TIB.ETA - ETA-Florence Renewable Energies"
+  },
+  {
+    "prefixes": [
+      "10.4118"
+    ],
+    "datacentre": "TIB.FLOSS - FLOSS Project, Syracuse University"
+  },
+  {
+    "prefixes": [
+      "10.5286"
+    ],
+    "datacentre": "BL.STFC - Science and Technology Facilities Council"
+  },
+  {
+    "prefixes": [
+      "10.5878"
+    ],
+    "datacentre": "SND.SND - Swedish National Data Service"
+  },
+  {
+    "prefixes": [
+      "10.6092",
+      "10.6093"
+    ],
+    "datacentre": "CRUI.UNINA - Università degli Studi di Napoli Federico II"
+  },
+  {
+    "prefixes": [
+      "10.5162"
+    ],
+    "datacentre": "TIB.AMA - AMA Service GmbH"
+  },
+  {
+    "prefixes": [
+      "10.5452"
+    ],
+    "datacentre": "ETHZ.MA - SIB modelarchive.org"
+  },
+  {
+    "prefixes": [
+      "10.7282"
+    ],
+    "datacentre": "CDL.RUTGERS - Rutgers University Library"
+  },
+  {
+    "prefixes": [
+      "10.14272"
+    ],
+    "datacentre": "TIB.KIT-IOC - Karlsruher Institut für Technologie - Institut für Organische Chemie"
+  },
+  {
+    "prefixes": [
+      "10.5445"
+    ],
+    "datacentre": "TIB.KIT - Karlsruher Institut für Technologie"
+  },
+  {
+    "prefixes": [
+      "10.3204"
+    ],
+    "datacentre": "TIB.DESY - DESY - Deutsches Elektronen-Synchrotron"
+  },
+  {
+    "prefixes": [
+      "10.7287"
+    ],
+    "datacentre": "CDL.PEERJ - PeerJ"
+  },
+  {
+    "prefixes": [
+      "10.5170"
+    ],
+    "datacentre": "ETHZ.CERN - CERN Document Server"
+  },
+  {
+    "prefixes": [
+      "10.7283"
+    ],
+    "datacentre": "CDL.UNAVCO - UNAVCO"
+  },
+  {
+    "prefixes": [
+      "10.5281"
+    ],
+    "datacentre": "DK.OPENAIRE - Open Aire Project"
+  },
+  {
+    "prefixes": [
+      "10.3285"
+    ],
+    "datacentre": "TIB.GEOZON - Geozon Science Media"
+  },
+  {
+    "prefixes": [
+      "10.7480"
+    ],
+    "datacentre": "DELFT.TUDARCH - TU Delft Architecture"
+  },
+  {
+    "prefixes": [
+      "10.5066"
+    ],
+    "datacentre": "CDL.USGS - USGS Core Science Analytics and Synthesis (CSAS)"
+  },
+  {
+    "prefixes": [
+      "10.4233"
+    ],
+    "datacentre": "DELFT.TUDELFT - TU Delft Library"
+  },
+  {
+    "prefixes": [
+      "10.5258"
+    ],
+    "datacentre": "BL.SOTON - University of Southampton"
+  },
+  {
+    "prefixes": [
+      "10.5681"
+    ],
+    "datacentre": "ZBMED.TABRIZ - Tabriz University of Medical Sciences"
+  },
+  {
+    "prefixes": [
+      "10.3933"
+    ],
+    "datacentre": "ETHZ.AR - Applied Rheology"
+  },
+  {
+    "prefixes": [
+      "10.5073"
+    ],
+    "datacentre": "TIB.JKI - Julius Kühn-Institut"
+  },
+  {
+    "prefixes": [
+      "10.5076"
+    ],
+    "datacentre": "ETHZ.ECODICES - e-codices"
+  },
+  {
+    "prefixes": [
+      "10.5439"
+    ],
+    "datacentre": "OSTI.ORNLARM - Oak Ridge National Laboratory - Atmospheric Radiation Measurement (ARM) Data Archive"
+  },
+  {
+    "prefixes": [
+      "10.5065"
+    ],
+    "datacentre": "CDL.NCAR - National Center for Atmospheric Research (NCAR)"
+  },
+  {
+    "prefixes": [
+      "10.2312"
+    ],
+    "datacentre": "TIB.GFZBIB - Bibliothek des Wissenschaftsparks Albert Einstein"
+  },
+  {
+    "prefixes": [
+      "10.4231",
+      "10.13011"
+    ],
+    "datacentre": "PURDUE.NEES - Network for Earthquake Engineering Simulation (NEES)"
+  },
+  {
+    "prefixes": [
+      "10.13153"
+    ],
+    "datacentre": "GESIS.DIAMETRO - Diametros"
+  },
+  {
+    "prefixes": [
+      "10.3205"
+    ],
+    "datacentre": "TIB.CTT - Cellular Therapy and Transplantation"
+  },
+  {
+    "prefixes": [
+      "10.7916"
+    ],
+    "datacentre": "CDL.CULIS - Columbia University Libraries/Information Services (CUL/IS)"
+  },
+  {
+    "prefixes": [
+      "10.7910"
+    ],
+    "datacentre": "CDL.DATAVERS - Harvard Dataverse"
+  },
+  {
+    "prefixes": [
+      "10.4225"
+    ],
+    "datacentre": "ANDS.CENTRE-8 - CSIRO"
+  },
+  {
+    "prefixes": [
+      "10.5062"
+    ],
+    "datacentre": "CDL.UCSB - UCSB"
+  },
+  {
+    "prefixes": [
+      "10.5290"
+    ],
+    "datacentre": "DELFT.JRC - Joint Research Centre's Institute of Energy"
+  },
+  {
+    "prefixes": [
+      "10.5279"
+    ],
+    "datacentre": "DK.SA - The State Archives"
+  },
+  {
+    "prefixes": [
+      "10.7303"
+    ],
+    "datacentre": "CDL.SAGEBIO - Sage Bionetworks"
+  },
+  {
+    "prefixes": [
+      "10.7485"
+    ],
+    "datacentre": "TIB.HOG - Hugo-Obermaier-Gesellschaft"
+  },
+  {
+    "prefixes": [
+      "10.4232"
+    ],
+    "datacentre": "GESIS.GESIS - GESIS.GESIS"
+  },
+  {
+    "prefixes": [
+      "10.12751"
+    ],
+    "datacentre": "TIB.G-NODE - German Neuroinformatics Node "
+  },
+  {
+    "prefixes": [
+      "10.5067"
+    ],
+    "datacentre": "CDL.NASAGSFC - NASA Goddard Space Flight Center (GSFC)"
+  },
+  {
+    "prefixes": [
+      "10.5291"
+    ],
+    "datacentre": "INIST.ILL - Institut Laue-Langevin"
+  },
+  {
+    "prefixes": [
+      "10.5444"
+    ],
+    "datacentre": "TIB.ESGAR - European Society of Gastrointestinal and Abdominal Radiology"
+  },
+  {
+    "prefixes": [
+      "10.7265"
+    ],
+    "datacentre": "CDL.NSIDC - National Snow & Ice Data Center (NSIDC)"
+  },
+  {
+    "prefixes": [
+      "10.5277"
+    ],
+    "datacentre": "TIB.OWPWR - Politechnika Wrocławska"
+  },
+  {
+    "prefixes": [
+      "10.2195"
+    ],
+    "datacentre": "TIB.LJ-RED - Logistics Journal"
+  },
+  {
+    "prefixes": [
+      "10.5257"
+    ],
+    "datacentre": "BL.ESDS-I - ESDS International Mimas, The University of Manchester"
+  },
+  {
+    "prefixes": [
+      "10.6092"
+    ],
+    "datacentre": "CRUI.POLITO - Politecnico di Torino"
+  },
+  {
+    "prefixes": [
+      "10.6070"
+    ],
+    "datacentre": "CDL.LABARCH - LabArchives"
+  }
+]

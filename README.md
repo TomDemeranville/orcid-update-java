@@ -99,8 +99,6 @@ Handle refresh tokens properly
 
 Anything else you feel like.  Pull requests welcome.
 
-Add other identifiers to DOI search
-
 ##Contact
 
 [@tomdemeranville on twitter](https://twitter.com/tomdemeranville)
