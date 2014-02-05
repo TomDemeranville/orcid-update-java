@@ -181,7 +181,7 @@
                  header: '<h4>Datacentres</h4>',
                  prefetch: '/api/doiprefix/datacentres'
                },
-             {
+             {/* don't want this here, but heyho for now */
                  name: 'other',
                  header: '<h4>Other providers</h4>',
                  local: [{"value":"EThOS - UK E-Thesis service","doi":"uk.bl","type":"other-id"}]
