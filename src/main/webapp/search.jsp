@@ -49,11 +49,12 @@
 	      </div>
 	      <div class="modal-body">
 	        <p>To search by publisher, start typing the publisher name into the publisher search box.</p>
-	        <p><i>Example: British Hydrological Society</i></p>
+	        <p>Example: <i>British Hydrological Society</i> or <i>CERN</i></p>
+	        <p>Note that these are not always obvious e.g. FIGSHARE DOIs are listed as "CDL.DIGSCI - Digital Science". Some publishers have multiple prefixes and some publishers share DOI prefixes.</p> 
 	        <hr/>	        
 	        <p>To search by identifier, enter a complete DOI (e.g. "10.9998/abc123") or DOI prefix (e.g."10.9998/") in the search box.
 	        You can change the identifier type to search and how to match it using the drop-downs.</p> 
-	        <p><i>Example: Choose "Other ID" as the identifier type and enter "uk.bl" in the search box to see all Ethos e-theses</i></p>
+	        <p>>Example: <i>Choose "Other ID" as the identifier type and enter "uk.bl" in the search box to see all Ethos e-theses</i></p>
 	        <!-- button type="button" data-dismiss="modal" onClick="javascript:">Try Me</button> -->
 	      </div>
 	      <div class="modal-footer">
@@ -179,12 +180,22 @@
                  name: 'datacentres',
                  header: '<h4>Datacentres</h4>',
                  prefetch: '/api/doiprefix/datacentres'
+               },
+             {
+                 name: 'other',
+                 header: '<h4>Other providers</h4>',
+                 local: [{"value":"EThOS - UK E-Thesis service","doi":"uk.bl","type":"other-id"}]
                }
+             
            ]).on('typeahead:selected', function (obj, datum) {
         	    console.log(obj);
         	    console.log(datum);
+        	    if (datum.type)
+	       	    	 $('#idtype').val(datum.type).change();
+	       	    else
+	        	    $('#idtype').val("doi").change();
+
         	    searchBox.val(datum.doi);
-        	    $('#idtype').val("doi");
         	    searchBox.keydown();
         	    searchBox.keyup();
         	});
