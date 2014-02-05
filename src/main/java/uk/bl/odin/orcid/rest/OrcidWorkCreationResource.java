@@ -26,20 +26,21 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 	@Inject
 	OrcidOAuthClient orcidOAuthClient;
 
-	private static JAXBContext orcidWorkJAXBContext;// = JAXBContext.newInstance(OrcidWork.class);
-	
+	private static JAXBContext orcidWorkJAXBContext;// =
+													// JAXBContext.newInstance(OrcidWork.class);
+
 	@Override
-	public void doInit(){
+	public void doInit() {
 		super.doInit();
-		if (orcidWorkJAXBContext==null){
+		if (orcidWorkJAXBContext == null) {
 			try {
 				orcidWorkJAXBContext = JAXBContext.newInstance(OrcidWork.class);
 			} catch (JAXBException e) {
-				this.setStatus(Status.SERVER_ERROR_INTERNAL,e.getMessage());
+				this.setStatus(Status.SERVER_ERROR_INTERNAL, e.getMessage());
 			}
 		}
 	}
-	
+
 	/**
 	 * Accepts an XML encoded ORCID work. POSTs work to ORCID as a new work.
 	 * Requires ?token= query param containing ORCID auth token.
@@ -64,7 +65,7 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 		} catch (ResourceException e) {
 			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e);
 		} catch (IOException e) {
-			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e);			
+			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e);
 		}
 
 		// TODO: test on GAE 1.8.1+

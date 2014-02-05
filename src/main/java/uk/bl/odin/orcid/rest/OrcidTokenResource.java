@@ -16,7 +16,7 @@ import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
 public class OrcidTokenResource extends SelfInjectingServerResource {
 
 	private static final Logger log = Logger.getLogger(OrcidTokenResource.class.getName());
-	
+
 	@Inject
 	OrcidOAuthClient orcidOAuthClient;
 
@@ -34,13 +34,13 @@ public class OrcidTokenResource extends SelfInjectingServerResource {
 			return token;
 		} catch (ResourceException e) {
 			if (e.getStatus().isServerError())
-				this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY,e);
+				this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e);
 			else
 				this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e);
-			log.info("Resource exception"+e.getMessage());
+			log.info("Resource exception" + e.getMessage());
 		} catch (IOException e) {
 			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e);
-		} 
+		}
 		return null;
 	}
 }

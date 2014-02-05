@@ -20,24 +20,22 @@ import uk.bl.odin.orcid.schema.messages.onepointone.OrcidSearchResults;
 public class OrcidSearchResource extends SelfInjectingServerResource {
 
 	private static final Logger log = Logger.getLogger(OrcidSearchResource.class.getName());
-	
+
 	@Inject
 	OrcidPublicClient client;
 
 	private SearchKey search = new SearchKey();
 
-	/** Performs a search against the public API.
-	 * Expects GET params:
-	 * idtype - one of OrcidExternalIdentifierType, for example: isbn, doi, other-id
-	 * term - the search term, 
-	 * searchtype - one of 'exact', 'solr' or 'prefix'
-	 * Optional params:
-	 * page (from 0), pagesize
+	/**
+	 * Performs a search against the public API. Expects GET params: idtype -
+	 * one of OrcidExternalIdentifierType, for example: isbn, doi, other-id term
+	 * - the search term, searchtype - one of 'exact', 'solr' or 'prefix'
+	 * Optional params: page (from 0), pagesize
 	 * 
 	 */
 	@Override
 	public void doInit() {
-		super.doInit();//for injection!
+		super.doInit();// for injection!
 		try {
 			OrcidSearchField field = OrcidExternalIdentifierType.fromString(this.getQueryValue("idtype"))
 					.toOrcidSearchField();
@@ -60,7 +58,7 @@ public class OrcidSearchResource extends SelfInjectingServerResource {
 				search.setPage(Integer.parseInt(page));
 			if (pageSize != null)
 				search.setPagesize(Integer.parseInt(pageSize));
-			
+
 		} catch (IllegalArgumentException e) {
 			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
 		}
@@ -74,7 +72,7 @@ public class OrcidSearchResource extends SelfInjectingServerResource {
 		} catch (IOException e) {
 			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e.getMessage());
 			return null;
-		} 
+		}
 	}
-	
+
 }

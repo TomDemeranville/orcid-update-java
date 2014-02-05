@@ -10,10 +10,10 @@ import uk.bl.odin.orcid.schema.messages.onepointone.WorkExternalIdentifier;
 
 public class OrcidClientHelper {
 
-	public Set<String> getIDs(OrcidWorks works, OrcidWorkType type){
+	public Set<String> getIDs(OrcidWorks works, OrcidWorkType type) {
 		Set<String> ret = new HashSet<String>();
-		for (OrcidWork work : works.getOrcidWork()){
-			for (WorkExternalIdentifier id : work.getWorkExternalIdentifiers().getWorkExternalIdentifier()){
+		for (OrcidWork work : works.getOrcidWork()) {
+			for (WorkExternalIdentifier id : work.getWorkExternalIdentifiers().getWorkExternalIdentifier()) {
 				if (id.getWorkExternalIdentifierType().equals(type.toString()))
 					ret.add(id.getWorkExternalIdentifierId());
 			}

@@ -69,8 +69,8 @@ public class RootGuiceModule extends AbstractModule {
 			log.severe("Init params are:  " + context.getParameters().toString());
 			throw new IllegalStateException("cannot create OrcidWorkProvier - missing init parameter");
 		}
-		
-		//Resolve OrcidWork provider 
+
+		// Resolve OrcidWork provider
 		IsOrcidWorkProvider provider;
 		try {
 			provider = (IsOrcidWorkProvider) Class.forName(
@@ -93,10 +93,10 @@ public class RootGuiceModule extends AbstractModule {
 		bind(Boolean.class).annotatedWith(Names.named(CONFIG_KEY_OrcidSandbox)).toInstance(
 				Boolean.valueOf(context.getParameters().getFirst(CONFIG_KEY_OrcidSandbox).getValue().toString()));
 
-		//TODO: - put in external config?
+		// TODO: - put in external config?
 		bind(Integer.class).annotatedWith(Names.named(CONFIG_KEY_CacheTimeout)).toInstance(30);
 		bind(Integer.class).annotatedWith(Names.named(CONFIG_KEY_CacheMaxsize)).toInstance(1000);
-		
+
 		// bind dependencies
 		bind(OrcidOAuthClient.class).asEagerSingleton();
 		bind(OrcidPublicClient.class).asEagerSingleton();

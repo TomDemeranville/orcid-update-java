@@ -16,8 +16,8 @@ import uk.bl.odin.orcid.rest.OrcidSearchResource;
 import uk.bl.odin.orcid.rest.OrcidTokenResource;
 import uk.bl.odin.orcid.rest.OrcidWorkCreationResource;
 import uk.bl.odin.orcid.rest.report.DatacentreDOIPrefixResource;
-import uk.bl.odin.orcid.rest.report.PublisherDOIPrefixResource;
 import uk.bl.odin.orcid.rest.report.OrcidDataCentreReportResource;
+import uk.bl.odin.orcid.rest.report.PublisherDOIPrefixResource;
 
 /**
  * RESTlet routing and general application configuration.
@@ -54,20 +54,20 @@ public class RootRouter extends Router {
 		this.attach("/orcid/token", OrcidTokenResource.class);
 		this.attach("/orcid/requests/{originalRef}", OrcidAuthURLResource.class);
 		this.attach("/orcid/requests", OrcidAuthURLResource.class);
-		
+
 		this.attach("/orcid/search", OrcidSearchResource.class);
-		
+
 		this.attach("/orcid/{orcid}/orcid-works/create", OrcidWorkCreationResource.class);
 		this.attach("/orcid/{orcid}", OrcidProfileResource.class);
 		this.attach("/meta/{id}", MetadataFetchResource.class);
 
-		//reporting rest routes
+		// reporting rest routes
 		this.attach("/report/datatable", OrcidDataCentreReportResource.class);
 		this.attach("/doiprefix/publishers", PublisherDOIPrefixResource.class);
 		this.attach("/doiprefix/datacentres", DatacentreDOIPrefixResource.class);
-		//identifier enumerations
+		// identifier enumerations
 		this.attach("/identifier/{type}", OrcidIdentifierResource.class);
-		
+
 		// add a webjars listener(see
 		// http://demeranville.com/controlling-the-cache-headers-for-a-restlet-directory/
 		final Directory dir = new Directory(getContext(), "clap://class/META-INF/resources/webjars");

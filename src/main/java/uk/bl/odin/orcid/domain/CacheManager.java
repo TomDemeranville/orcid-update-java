@@ -12,30 +12,35 @@ import uk.bl.odin.orcid.schema.messages.onepointone.OrcidSearchResults;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
-/** Default cacheManager.  Uses Guava cache
+/**
+ * Default cacheManager. Uses Guava cache
  * 
- *   TODO: refactor into interface so we can swap memcached in/out using Guice if required.
+ * TODO: refactor into interface so we can swap memcached in/out using Guice if
+ * required.
  * 
  * @author tom
- *
+ * 
  */
-public class CacheManager{
-	
-	private final Cache<SearchKey, OrcidSearchResults> searchCache; 
+public class CacheManager {
+
+	private final Cache<SearchKey, OrcidSearchResults> searchCache;
 
 	private final Cache<String, OrcidProfile> profileCache;
 
 	@Inject
-	public CacheManager(@Named("OrcidCacheTimeout") Integer timeOutInMinutes,@Named("OrcidCacheMaxsize") Integer maximumSize){
-		searchCache = CacheBuilder.newBuilder().expireAfterWrite(timeOutInMinutes, TimeUnit.MINUTES).maximumSize(maximumSize).build();
-		profileCache = CacheBuilder.newBuilder().expireAfterWrite(timeOutInMinutes, TimeUnit.MINUTES).maximumSize(maximumSize).build();
+	public CacheManager(@Named("OrcidCacheTimeout") Integer timeOutInMinutes,
+			@Named("OrcidCacheMaxsize") Integer maximumSize) {
+		searchCache = CacheBuilder.newBuilder().expireAfterWrite(timeOutInMinutes, TimeUnit.MINUTES)
+				.maximumSize(maximumSize).build();
+		profileCache = CacheBuilder.newBuilder().expireAfterWrite(timeOutInMinutes, TimeUnit.MINUTES)
+				.maximumSize(maximumSize).build();
 	}
-	
-	public Cache<SearchKey, OrcidSearchResults> getSearchCache(){
+
+	public Cache<SearchKey, OrcidSearchResults> getSearchCache() {
 		return searchCache;
 	}
-	
-	public Cache<String, OrcidProfile> getProfilecache(){
+
+	public Cache<String, OrcidProfile> getProfilecache() {
 		return profileCache;
 	}
 
