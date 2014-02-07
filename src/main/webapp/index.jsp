@@ -1,12 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><%
 	//VERY simple templating. YMMV.
     final String title = "ORCID Thesis Import";
 	final String introline1 = "Export your E-Thesis from ETHOS and import it into ORCID";
 	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>)";
 	final String inputPlaceholder = "Example: uk.bl.ethos.398762";
-%>
-
+%><!DOCTYPE html>
 <html>
 <head>
     <title><%= title %></title>
@@ -103,6 +101,7 @@
 <!-- fetch our maven managed javascript dependencies last to speed loading-->
 <script src="/api/webjars/jquery/1.9.0/jquery.min.js"></script>
 <script src="/api/webjars/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="/api/webjars/jquery-placeholder/2.0.7/jquery.placeholder.js"></script>
 
 <script>
 var orcidapp = (function (){
@@ -233,6 +232,7 @@ $(function() {
 			$('#workid').val(getUrlVar("state"));
 		orcidapp.startAgain();
 	}
+	$('input').placeholder();
 });
 </script>
 </body>

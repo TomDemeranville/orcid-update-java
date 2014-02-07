@@ -1,8 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><%
 	//VERY simple templating. YMMV.
     final String title = "ORCID Datacentre reporting";
-%>
+%><!DOCTYPE html>
 <html>
 <head>
     <title><%= title %></title>
@@ -30,7 +29,7 @@
 	          <ul class="nav navbar-nav">
             <li><a href="/">Add Work</a></li>
             <li class="active"><a href="/search">Datacentre reporting</a></li>
-	        <li><a href="javascript:$('#helpModal').modal('show')">Help</a></li>
+	        <li><a href="#" onclick="$('#helpModal').modal('show');">Help</a></li>
 	          </ul>
 	        </div>
 	</div>
@@ -77,9 +76,7 @@
 <script src="/api/webjars/datatables/1.9.4/media/js/jquery.dataTables.min.js"></script>
 <script src="/api/webjars/datatables-plugins/ca6ec50/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 <script src="/api/webjars/typeaheadjs/0.9.3/typeahead.min.js"></script>
-<!-- 
-<script src="/api/webjars/datatables-plugins/ca6ec50/pagination/bootstrap.js"></script>
- -->
+<script src="/api/webjars/jquery-placeholder/2.0.7/jquery.placeholder.js"></script>
 <script>
 	//STARTUP CODE
 	var oTable; // our handle on the datatable
@@ -200,6 +197,9 @@
         	    searchBox.keyup();
         	});
 		 $('.tt-hint').addClass('form-control');
+
+		 //IE placeholder - for older browsers.  And IE9.  ffs.
+		 $('input').placeholder();
           
 	});
 	</script>
