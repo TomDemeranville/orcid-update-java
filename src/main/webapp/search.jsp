@@ -108,7 +108,7 @@
                 "oLanguage": { "sSearch": "","sZeroRecords":"There are no ORCiDs to display." },
                 "iDeferLoading": [ 0, 0 ],
                 "bDeferLoading":true,
-                "bSort":false,
+                "bSort":false
                 //"bStateSave":true
 		         //"oSearch": {"sSearch": "10."}            
 		        
