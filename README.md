@@ -8,6 +8,10 @@ The ORCiD client library is available at (https://github.com/TomDemeranville/orc
 
 You can see the full application in action at (http://ethos-orcid.appspot.com/)
 
+##NEW!! Generic DC metadata support for institutional repositories
+
+Tested with theses in the University of Leicester repository, for example: https://lra.le.ac.uk/handle/2381/8436
+
 ##NEW!! Built in reporting for publishers & datacentres
 
 Datacentres can now lookup ORCiD users that have regitered their DOIs or other identifiers.  You can look up by DOI, DOI prefix or publisher name.  See (http://ethos-orcid.appspot.com/search)
