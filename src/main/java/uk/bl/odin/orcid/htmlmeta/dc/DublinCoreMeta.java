@@ -7,6 +7,7 @@ import com.google.common.collect.LinkedHashMultimap;
 import uk.bl.odin.orcid.client.constants.OrcidContributorRole;
 import uk.bl.odin.orcid.client.constants.OrcidContributorSequence;
 import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifierType;
+import uk.bl.odin.orcid.client.constants.OrcidWorkType;
 import uk.bl.odin.orcid.domain.BibtexBuilder;
 import uk.bl.odin.orcid.domain.IsOrcidWork;
 import uk.bl.odin.orcid.htmlmeta.AbstractMeta;
@@ -56,7 +57,10 @@ public class DublinCoreMeta extends AbstractMeta<DC_KEYS> implements IsOrcidWork
 		if (get(DC_KEYS.TYPE)!=null){
 			//TODO match vocab with orcid
 			//TODO match multiokes
-			work.setWorkType(getFirst(DC_KEYS.TYPE));
+			if (getFirst(DC_KEYS.TYPE).equalsIgnoreCase("thesis"))
+				work.setWorkType(OrcidWorkType.DISSERTAION.toString());
+			else
+				work.setWorkType(getFirst(DC_KEYS.TYPE));
 		}
 		
 		if (get(DC_KEYS.DATE)!=null){
@@ -120,7 +124,7 @@ public class DublinCoreMeta extends AbstractMeta<DC_KEYS> implements IsOrcidWork
 		}
 		
 		try{
-			if (work.getWorkType().equals("thesis")){
+			if (work.getWorkType().equals(OrcidWorkType.DISSERTAION.toString())){
 				Citation citation = new Citation(); 
 				citation.setCitation(BibtexBuilder.getInstance().buildPHDCitation(getFirst(DC_KEYS.CREATOR), getFirst(DC_KEYS.TITLE), getFirst(DC_KEYS.PUBLISHER), getFirst(DC_KEYS.DATE)));
 				citation.setWorkCitationType(CitationType.BIBTEX);

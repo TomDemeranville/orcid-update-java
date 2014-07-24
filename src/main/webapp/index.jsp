@@ -2,7 +2,7 @@
 	//VERY simple templating. YMMV.
     final String title = "ORCID Thesis Import";
 	final String introline1 = "Export your E-Thesis and import it into ORCID";
-	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>) or a institutional repository URL";
+	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>) or an institutional repository URL";
 	final String inputPlaceholder = "Example: uk.bl.ethos.398762";
 %><!DOCTYPE html>
 <html>
