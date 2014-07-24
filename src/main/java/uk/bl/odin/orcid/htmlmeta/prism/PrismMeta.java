@@ -7,7 +7,7 @@ public class PrismMeta implements IsOrcidWork{
 
 	@Override
 	public OrcidWork toOrcidWork() {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 }

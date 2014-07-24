@@ -25,15 +25,12 @@ public class DelegatingMetaScraper implements IsOrcidWorkProvider {
 	@Override
 	public IsOrcidWork fetch(String url) throws IOException {
 		//check to see if we have an ethos ID
-		System.out.println("here ");
-		
 		if (url.startsWith("uk.bl.ethos")){
 			EthosMetaScraper scrape = new EthosMetaScraper();
 			return scrape.fetch(url);
 		}
 		
 		HTMLMetaBuilder builder = cache.getIfPresent(url);
-		System.out.println("here 3");
 		if (builder == null){
 			System.out.println("looking up "+url);
 			Document doc = Jsoup.connect(url).timeout(10000).get();
@@ -41,7 +38,6 @@ public class DelegatingMetaScraper implements IsOrcidWorkProvider {
 		}		
 		
 		return builder.getDublinCoreMeta();
-		//return builder.getEPrintsMeta();	
 	}
 
 }

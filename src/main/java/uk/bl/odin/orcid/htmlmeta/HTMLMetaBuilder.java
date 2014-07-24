@@ -26,6 +26,8 @@ import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
  * fields for journal title, volume, issue, and page numbers. To check that
  * these tags are present, visit several abstracts and view their HTML source.
  * 
+ * THEY ALL NEED WORK - THEY'VE BEEN BUNGED TOGETHER QUICKLY
+ * 
  * @see http://scholar.google.com/intl/en/scholar/inclusion.html#indexing
  * 
  * @author tom

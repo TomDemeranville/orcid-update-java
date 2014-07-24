@@ -31,6 +31,10 @@ import uk.bl.odin.orcid.schema.messages.onepointone.Year;
 public class EPrintsMeta extends AbstractMeta<EP_KEYS> implements IsOrcidWork{
 	
 	private static Pattern yearmatcher = Pattern.compile("\\d{4}");
+	
+	/** Really, really ropey implementation
+	 * 
+	 */
 	@Override
 	public OrcidWork toOrcidWork() {
 		OrcidWork work = new OrcidWork();
