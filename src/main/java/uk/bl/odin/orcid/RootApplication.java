@@ -20,7 +20,7 @@ public class RootApplication extends Application {
 
 	@Override
 	public Restlet createInboundRoot() {
-		Guice.createInjector(new RootGuiceModule(this.getContext()), new SelfInjectingServerResourceModule());
+		Guice.createInjector(new GuiceConfigModule(this.getContext()), new SelfInjectingServerResourceModule());
 		return new RootRouter(this.getContext());
 	}
 

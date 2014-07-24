@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%
 	//VERY simple templating. YMMV.
     final String title = "ORCID Thesis Import";
-	final String introline1 = "Export your E-Thesis from ETHOS and import it into ORCID";
-	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>)";
+	final String introline1 = "Export your E-Thesis and import it into ORCID";
+	final String introline2 = "Please enter your ETHOS Thesis ID (<a href=\"http://ethos.bl.uk/\" target=\"_blank\">Find my thesis ID</a>) or a institutional repository URL";
 	final String inputPlaceholder = "Example: uk.bl.ethos.398762";
 %><!DOCTYPE html>
 <html>
@@ -13,13 +13,12 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="/api/webjars/html5shiv/3.6.2/html5shiv.js"></script>
-      <script src="/api/webjars/respond.js/1.3.0/respond.min.js"></script>
+      <script src="api/webjars/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="api/webjars/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     
     <!-- fetch our maven managed css dependencies -->
-    <link rel='stylesheet' href='/api/webjars/bootstrap/3.0.3/css/bootstrap.min.css'>
-
+    <link rel='stylesheet' href='api/webjars/bootstrap/3.0.3/css/bootstrap.min.css'>
 </head>
 <body>
     
@@ -55,7 +54,16 @@
 	  <p class="lead">Is this the work you're looking for? </p>
 	  <div class="alert alert-info">
 		  <p class="lead">Title: <b id="work1"></b></p>
+		    <div class="spoiler-btn" style="cursor: pointer;"><small>Show more...</small></div>
+		    <div class="spoiler-body collapse" > 
+			  <p>Type: <b id="workType1"></b></p>
+			  <p>Citation: <b id="workCitation1"></b></p>
+			  <p>Citation Type: <b id="workCitationType1"></b></p>
+		  </div>
 	  </div>
+	  
+
+	  
 	  <p><button class="btn btn-lg btn-primary" onClick="orcidapp.loginToOrcid($('#workid').val());">Log me into ORCID</span></button></p>
 	  <p><button class="btn btn-warning" onClick="orcidapp.startAgain();">That's not my work. Start again</button></p>
 	</div>
@@ -99,9 +107,9 @@
 </div>
       
 <!-- fetch our maven managed javascript dependencies last to speed loading-->
-<script src="/api/webjars/jquery/1.9.0/jquery.min.js"></script>
-<script src="/api/webjars/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="/api/webjars/jquery-placeholder/2.0.7/jquery.placeholder.js"></script>
+<script src="api/webjars/jquery/1.9.0/jquery.min.js"></script>
+<script src="api/webjars/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="api/webjars/jquery-placeholder/2.0.7/jquery.placeholder.js"></script>
 
 <script>
 var orcidapp = (function (){
@@ -112,7 +120,7 @@ var orcidapp = (function (){
 		if (id=="")return;
 		$("#spin").show();
 		$.ajax({
-		    url: "/api/meta/"+id,
+		    url: "api/meta?id="+encodeURIComponent(id),
 		    type: 'GET',
 		    contentType: "text/xml",
 		    success: function(result) {
@@ -121,8 +129,17 @@ var orcidapp = (function (){
 			    console.log(result);
 			    self.workXML = result;
 			    self.workTitle = $(result).find("work-title").text();
+			    self.workType = $(result).find("work-type").text();
+			    self.workCitation = $(result).find("citation").text();
+			    self.workCitationType = $(result).find("work-citation-type").text();
 				$('#work1').text(self.workTitle);
 				$('#work2').text(self.workTitle);
+				$('#workType1').text(self.workType);
+				$('#workType2').text(self.workType);
+				$('#workCitation1').text(self.workCitation);
+				$('#workCitation2').text(self.workCitation);
+				$('#workCitationType1').text(self.workCitationType);
+				$('#workCitationType2').text(self.workCitationType);
 				if (self.authToken && self.orcid)
 					self.showPanel("confirmAndUpdate");
 				else
@@ -141,14 +158,14 @@ var orcidapp = (function (){
 	};
 
 	self.loginToOrcid = function(id){
-		window.location = "/api/orcid/requests/"+id+"?redirect=true";
+		window.location = "api/orcid/requests/"+encodeURIComponent(id)+"?redirect=true";
 	};
 
 	//post the OrcidWork and token to update the users profile
 	self.updateProfile = function(authCode, id){
 		$("#spin2").show();
 		$.ajax({
-		    url: "/api/orcid/"+self.orcid+"/orcid-works/create?token="+self.authToken,
+		    url: "api/orcid/"+self.orcid+"/orcid-works/create?token="+self.authToken,
 		    data: self.workXML, 
 		    type: 'POST',
 		    contentType: "text/xml",
@@ -171,7 +188,7 @@ var orcidapp = (function (){
 
 	//get the auth token and then the work xml if sucessful (if we have a work code)
 	self.fetchAuthToken = function(authcode,work){
-		$.getJSON("/api/orcid/token", {
+		$.getJSON("api/orcid/token", {
 			code: authcode, state: work
 		}).done(function(json) {
 			console.log(json);
@@ -233,7 +250,13 @@ $(function() {
 		orcidapp.startAgain();
 	}
 	$('input').placeholder();
+
+	$(document).on('click', '.spoiler-btn', function (e) {
+        e.preventDefault()
+        $(this).parent().children('.spoiler-body').collapse('toggle')
+    });
 });
+
 </script>
 </body>
 </html>

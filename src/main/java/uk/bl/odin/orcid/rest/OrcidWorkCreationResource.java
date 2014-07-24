@@ -63,6 +63,7 @@ public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 		} catch (JAXBException e) {
 			this.setStatus(Status.SERVER_ERROR_INTERNAL, e);
 		} catch (ResourceException e) {
+			e.printStackTrace();
 			this.setStatus(Status.CLIENT_ERROR_BAD_REQUEST, e);
 		} catch (IOException e) {
 			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e);

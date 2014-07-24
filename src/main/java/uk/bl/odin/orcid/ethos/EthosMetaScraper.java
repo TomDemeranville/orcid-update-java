@@ -63,7 +63,6 @@ public class EthosMetaScraper implements IsOrcidWorkProvider {
 		meta.setYear(year);
 		meta.setThesisType(thesisType);// could use DC, but it's often
 										// multi-valued.
-
 		meta.getIdentifiers().add(ethosID);
 		if (id != null && !id.isEmpty())
 			meta.getIdentifiers().add(id);

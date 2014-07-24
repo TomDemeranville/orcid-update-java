@@ -1,5 +1,7 @@
 package uk.bl.odin.orcid.domain;
 
+import com.google.appengine.repackaged.com.google.common.base.Joiner;
+
 /**
  * General Bibtex utilities
  */
@@ -9,7 +11,7 @@ public class BibtexBuilder {
 
 	private BibtexBuilder() {
 	}
-
+	
 	/**
 	 * Constructs a Bibtext PHD citation from its component parts. Escapes
 	 * characters, generates an ID
@@ -26,7 +28,58 @@ public class BibtexBuilder {
 		b.append("}");
 		return b.toString();
 	}
-
+	
+	//build journal citation
+	/**
+	 * 
+	 * @param title
+	 * @param journal
+	 * @param year
+	 * @param volume OPTIONAL
+	 * @param issue OPTIONAL
+	 * @param pages OPTIONAL
+	 * @param doi OPTIONAL
+	 * @param authors one or more authors - can be already joined.  If not joined will be concaternated with semi-colons.
+	 * @return
+	 */
+	public String buildArticleCitation(String title, String journal, String year, String volume, String issue, String pages, String doi, String... authors  ){
+		String author = Joiner.on(" ; ").join(authors);
+		StringBuilder b = new StringBuilder();
+		b.append("@article{" + generateBibIdentifier(author, year, title) + ",\n");
+		b.append("author = {" + escapeLatex(author) + "},\n");
+		b.append("title = {" + escapeLatex(title) + "},\n");
+		b.append("journal = {" + escapeLatex(journal) + "},\n");
+		b.append("year = " + escapeLatex(year) + "\n");
+		
+		if (volume != null)
+			b.append("volume = " + escapeLatex(volume) + "\n");
+		if (issue != null)
+			b.append("number = " + escapeLatex(issue) + "\n");
+		if (pages != null)
+			b.append("pages = " + escapeLatex(pages) + "\n");
+		
+		b.append("}");
+		return b.toString();
+	}
+	
+	
+	//build book citation
+	/*@book{ Y,
+editor = {J. Fagerberg and D.C. Mowery and R.R. Nelson}, 
+title      = {Oxford Handbook of Innovation},
+booktitle = {Oxford Handbook of Innovation},
+publisher = {Oxford University Press},
+address = {Oxford},
+year = 2004
+}
+	public String buildBookCitation(String author, String title, String year, String placeOfPublication, String publisher, String isbn ){
+		return null;
+	}
+	public String buildBookCitation(Iterable<String> authors, String title, String year, String placeOfPublication, String publisher, String isbn  ){
+		return null;
+	}
+	
+*/
 	/**
 	 * Creates a bibtex identifier from some parts of the metadata With thanks
 	 * to https://github.com/uschindler

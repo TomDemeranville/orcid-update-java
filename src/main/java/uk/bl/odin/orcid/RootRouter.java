@@ -59,7 +59,7 @@ public class RootRouter extends Router {
 
 		this.attach("/orcid/{orcid}/orcid-works/create", OrcidWorkCreationResource.class);
 		this.attach("/orcid/{orcid}", OrcidProfileResource.class);
-		this.attach("/meta/{id}", MetadataFetchResource.class);
+		this.attach("/meta", MetadataFetchResource.class); //the configured type
 
 		// reporting rest routes
 		this.attach("/report/datatable", OrcidDataCentreReportResource.class);

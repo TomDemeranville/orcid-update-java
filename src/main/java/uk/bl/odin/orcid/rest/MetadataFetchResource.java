@@ -1,6 +1,7 @@
 package uk.bl.odin.orcid.rest;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 
 import javax.inject.Inject;
 
@@ -25,7 +26,10 @@ public class MetadataFetchResource extends SelfInjectingServerResource {
 	@Get("xml")
 	public Representation getMetadataAsOrcidWork() {
 		try {
-			IsOrcidWork meta = orcidWorkProvider.fetch(this.getAttribute("id"));
+			//System.out.println(this.getAttribute("id"));
+			//System.out.println(URLDecoder.decode(this.getQueryValue("id")));
+			//IsOrcidWork meta = orcidWorkProvider.fetch(URLDecoder.decode(this.getAttribute("id")));
+			IsOrcidWork meta = orcidWorkProvider.fetch(URLDecoder.decode(this.getQueryValue("id")));
 			return new JaxbRepresentation<OrcidWork>(meta.toOrcidWork());
 		} catch (IOException e) {
 			this.setStatus(Status.SERVER_ERROR_BAD_GATEWAY, e.getMessage());

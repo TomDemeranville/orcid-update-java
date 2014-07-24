@@ -19,9 +19,9 @@ import com.google.inject.name.Names;
  * @author tom
  * 
  */
-public class RootGuiceModule extends AbstractModule {
+public class GuiceConfigModule extends AbstractModule {
 
-	private static final Logger log = Logger.getLogger(RootGuiceModule.class.getName());
+	private static final Logger log = Logger.getLogger(GuiceConfigModule.class.getName());
 	private Context context;
 	public static final String CONFIG_KEY_OrcidClientID = "OrcidClientID";
 	public static final String CONFIG_KEY_OrcidClientSecret = "OrcidClientSecret";
@@ -32,7 +32,7 @@ public class RootGuiceModule extends AbstractModule {
 	public static final String CONFIG_KEY_CacheTimeout = "OrcidCacheTimeout";
 	public static final String CONFIG_KEY_CacheMaxsize = "OrcidCacheMaxsize";
 
-	public RootGuiceModule(Context context) {
+	public GuiceConfigModule(Context context) {
 		super();
 		this.context = context;
 	}
