@@ -52,8 +52,8 @@ public class RootRouter extends Router {
 
 		// import work rest routes
 		this.attach("/orcid/token", OrcidTokenResource.class);
-		this.attach("/orcid/requests/{originalRef}", OrcidAuthURLResource.class);
-		this.attach("/orcid/requests", OrcidAuthURLResource.class);
+		//this.attach("/orcid/requests/{originalRef}", OrcidAuthURLResource.class);
+		this.attach("/orcid/requests", OrcidAuthURLResource.class);//?originalRef optional
 
 		this.attach("/orcid/search", OrcidSearchResource.class);
 

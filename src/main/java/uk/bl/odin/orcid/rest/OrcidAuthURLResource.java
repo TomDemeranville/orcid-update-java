@@ -24,7 +24,7 @@ public class OrcidAuthURLResource extends SelfInjectingServerResource {
 	 */
 	@Get("json")
 	public Map<String, String> getAuthzCodeRedirectURL() {
-		String ref = this.getAttribute("originalRef");
+		String ref = this.getQueryValue("originalRef");
 		String url = orcidOAuthClient.getAuthzCodeRequest(ref, OrcidAuthScope.CREATE_WORKS);
 		if (this.getQueryValue("redirect") != null) {
 			this.redirectPermanent(url);

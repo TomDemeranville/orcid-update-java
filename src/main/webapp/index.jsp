@@ -158,7 +158,7 @@ var orcidapp = (function (){
 	};
 
 	self.loginToOrcid = function(id){
-		window.location = "api/orcid/requests/"+encodeURIComponent(id)+"?redirect=true";
+		window.location = "api/orcid/requests?originalRef="+encodeURIComponent(id)+"&redirect=true";
 	};
 
 	//post the OrcidWork and token to update the users profile

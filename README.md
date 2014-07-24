@@ -56,7 +56,7 @@ It'll also play nicely in tomcat or jetty as a standard WAR file.
 	
 * `/orcid/token` convert authorization codes from ORCID into authz tokens
 * `/orcid/requests` generate a authz request url (`?redirect=true` to bounce user to ORCID with http redirect)
-* `/orcid/requests/{originalRef}` generate a authz request url with originalRef as state param (`?redirect=true` to bounce user to ORCID with http redirect)
+* `/orcid/requests?id={originalRef}` generate a authz request url with originalRef as state param (`?redirect=true` to bounce user to ORCID with http redirect)
 * `/orcid/{orcid}/orcid-works/create` create a work by posting OrcidWork XML (requires `?token=` orcid oauth token) 
 * `/meta?id=` fetch metadata from external source - use `?json` for raw form (note this is an implementation specific form, not a JSON form of ORCID metadata)
 * `/webjars` webjars endpoint - example: `/webjars/bootstrap/3.0.3/css/bootstrap.min.css` also includes JQuery 1.9.0
