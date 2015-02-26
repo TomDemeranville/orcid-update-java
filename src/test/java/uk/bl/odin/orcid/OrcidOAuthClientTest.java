@@ -3,6 +3,7 @@ package uk.bl.odin.orcid;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import javax.xml.bind.JAXBException;
@@ -34,7 +35,16 @@ public class OrcidOAuthClientTest {
 
 	@Before
 	public void before() throws IOException {
-		properties.load(getClass().getResourceAsStream("testoauth.properties"));
+		final String filename = "testoauth.properties";
+		final InputStream inputStream = getClass().getResourceAsStream(filename);
+
+		if (inputStream == null) {
+			throw new IOException(
+					"Unable to find properties file src/test/resources/uk/bl/odin/orcid/testoauth.properties"
+							+ filename);
+		}
+
+		properties.load(inputStream);
 	}
 
 	/**
@@ -60,11 +70,13 @@ public class OrcidOAuthClientTest {
 
 		driver.get(authzreq);
 
+		driver.findElement(By.id("in-register-switch-form")).click();
+
 		WebElement u = driver.findElement(By.id("userId"));
 		u.sendKeys(properties.getProperty("orcidUsername"));
 		WebElement p = driver.findElement(By.id("password"));
 		p.sendKeys(properties.getProperty("orcidPassword"));
-		p.submit();
+		driver.findElement(By.id("authorize-button")).click();
 
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By
 				.id("confirmationForm")));
