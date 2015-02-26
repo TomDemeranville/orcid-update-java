@@ -70,11 +70,13 @@ public class OrcidOAuthClientTest {
 
 		driver.get(authzreq);
 
+		driver.findElement(By.id("in-register-switch-form")).click();
+
 		WebElement u = driver.findElement(By.id("userId"));
 		u.sendKeys(properties.getProperty("orcidUsername"));
 		WebElement p = driver.findElement(By.id("password"));
 		p.sendKeys(properties.getProperty("orcidPassword"));
-		p.submit();
+		driver.findElement(By.id("authorize-button")).click();
 
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By
 				.id("confirmationForm")));
