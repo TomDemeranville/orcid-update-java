@@ -3,6 +3,7 @@ package uk.bl.odin.orcid;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import javax.xml.bind.JAXBException;
@@ -34,7 +35,16 @@ public class OrcidOAuthClientTest {
 
 	@Before
 	public void before() throws IOException {
-		properties.load(getClass().getResourceAsStream("testoauth.properties"));
+		final String filename = "testoauth.properties";
+		final InputStream inputStream = getClass().getResourceAsStream(filename);
+
+		if (inputStream == null) {
+			throw new IOException(
+					"Unable to find properties file src/test/resources/uk/bl/odin/orcid/testoauth.properties"
+							+ filename);
+		}
+
+		properties.load(inputStream);
 	}
 
 	/**
