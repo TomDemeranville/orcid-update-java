@@ -4,7 +4,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import uk.bl.odin.orcid.domain.IsOrcidWork;
 import uk.bl.odin.orcid.htmlmeta.dc.DC_KEYS;
 import uk.bl.odin.orcid.htmlmeta.dc.DublinCoreMeta;
 import uk.bl.odin.orcid.htmlmeta.eprints.EP_KEYS;
@@ -12,7 +11,6 @@ import uk.bl.odin.orcid.htmlmeta.eprints.EPrintsMeta;
 import uk.bl.odin.orcid.htmlmeta.highwire.HW_KEYS;
 import uk.bl.odin.orcid.htmlmeta.highwire.HighwireMeta;
 import uk.bl.odin.orcid.htmlmeta.prism.PrismMeta;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
 
 /**
  * Class that delegates to various HTML meta extractors and returns a best

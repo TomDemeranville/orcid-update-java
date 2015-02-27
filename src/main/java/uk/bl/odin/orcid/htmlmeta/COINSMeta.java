@@ -1,7 +1,7 @@
 package uk.bl.odin.orcid.htmlmeta;
 
 import uk.bl.odin.orcid.domain.IsOrcidWork;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidWork;
 
 public class COINSMeta implements IsOrcidWork{
 

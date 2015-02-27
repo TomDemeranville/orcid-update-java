@@ -16,7 +16,7 @@ import org.restlet.resource.ResourceException;
 import uk.bl.odin.orcid.client.OrcidAccessToken;
 import uk.bl.odin.orcid.client.OrcidOAuthClient;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidWork;
 
 public class OrcidWorkCreationResource extends SelfInjectingServerResource {
 
