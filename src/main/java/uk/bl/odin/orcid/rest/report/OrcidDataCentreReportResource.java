@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
+import javax.xml.bind.JAXBElement;
 
 import org.restlet.data.Status;
 import org.restlet.ext.jackson.JacksonRepresentation;
@@ -20,8 +21,9 @@ import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifierType;
 import uk.bl.odin.orcid.client.constants.OrcidSearchField;
 import uk.bl.odin.orcid.domain.CacheManager;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidSearchResult;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidSearchResults;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidId;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidSearchResult;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidSearchResults;
 
 import com.google.common.base.Joiner;
 
@@ -123,8 +125,9 @@ public class OrcidDataCentreReportResource extends SelfInjectingServerResource {
 			Joiner joiner = Joiner.on(", ").skipNulls();
 			for (OrcidSearchResult result : searchResults.getOrcidSearchResult()) {
 				BriefResult briefResult = new BriefResult();
-				briefResult.orcid = result.getOrcidProfile().getOrcidIdentifier().getPath();
-				briefResult.link = "<a href='" + result.getOrcidProfile().getOrcidIdentifier().getUri()
+				final OrcidId identifier = result.getOrcidProfile().getOrcidIdentifier();
+				briefResult.orcid = getValueFromOrcidId(identifier, "path");
+				briefResult.link = "<a href='" + getValueFromOrcidId(identifier, "uri")
 						+ "' target='_blank'>" + briefResult.orcid + "</a>";
 				briefResult.name = joiner.join(result.getOrcidProfile().getOrcidBio().getPersonalDetails()
 						.getFamilyName(), result.getOrcidProfile().getOrcidBio().getPersonalDetails().getGivenNames());
@@ -155,4 +158,13 @@ public class OrcidDataCentreReportResource extends SelfInjectingServerResource {
 		public String link;
 	}
 
+	private String getValueFromOrcidId(OrcidId orcidId, String name) throws IOException {
+		for (JAXBElement<String> element : orcidId.getContent()) {
+			if (element.getName().getLocalPart().equals(name)) {
+				return element.getValue();
+			}
+		}
+
+		throw new IOException("Unable to find JAXBElement with name '" + name + "'");
+	}
 }

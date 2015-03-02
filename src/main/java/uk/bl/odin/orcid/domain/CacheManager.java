@@ -6,8 +6,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import uk.bl.odin.orcid.client.SearchKey;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidProfile;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidSearchResults;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidProfile;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidSearchResults;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;

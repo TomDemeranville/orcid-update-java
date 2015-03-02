@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import uk.bl.odin.orcid.client.constants.OrcidWorkType;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWorks;
-import uk.bl.odin.orcid.schema.messages.onepointone.WorkExternalIdentifier;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidWork;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidWorks;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.WorkExternalIdentifier;
 
 public class OrcidClientHelper {
 

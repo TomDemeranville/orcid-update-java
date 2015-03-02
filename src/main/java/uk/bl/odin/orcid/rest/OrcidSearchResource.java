@@ -15,7 +15,7 @@ import uk.bl.odin.orcid.client.SearchKey;
 import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifierType;
 import uk.bl.odin.orcid.client.constants.OrcidSearchField;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidSearchResults;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidSearchResults;
 
 public class OrcidSearchResource extends SelfInjectingServerResource {
 

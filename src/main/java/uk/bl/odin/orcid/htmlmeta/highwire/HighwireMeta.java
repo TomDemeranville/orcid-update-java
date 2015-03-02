@@ -1,29 +1,24 @@
 package uk.bl.odin.orcid.htmlmeta.highwire;
 
-import java.util.Collection;
-import java.util.Set;
-
 import uk.bl.odin.orcid.client.constants.OrcidContributorRole;
 import uk.bl.odin.orcid.client.constants.OrcidContributorSequence;
 import uk.bl.odin.orcid.client.constants.OrcidExternalIdentifierType;
 import uk.bl.odin.orcid.domain.IsOrcidWork;
 import uk.bl.odin.orcid.htmlmeta.AbstractMeta;
-import uk.bl.odin.orcid.htmlmeta.dc.DC_KEYS;
-import uk.bl.odin.orcid.schema.messages.onepointone.Contributor;
-import uk.bl.odin.orcid.schema.messages.onepointone.ContributorAttributes;
-import uk.bl.odin.orcid.schema.messages.onepointone.CreditName;
-import uk.bl.odin.orcid.schema.messages.onepointone.JournalTitle;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidWork;
-import uk.bl.odin.orcid.schema.messages.onepointone.PublicationDate;
-import uk.bl.odin.orcid.schema.messages.onepointone.Visibility;
-import uk.bl.odin.orcid.schema.messages.onepointone.WorkContributors;
-import uk.bl.odin.orcid.schema.messages.onepointone.WorkExternalIdentifier;
-import uk.bl.odin.orcid.schema.messages.onepointone.WorkExternalIdentifiers;
-import uk.bl.odin.orcid.schema.messages.onepointone.WorkTitle;
-import uk.bl.odin.orcid.schema.messages.onepointone.Year;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.Contributor;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.ContributorAttributes;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.CreditName;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.JournalTitle;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidWork;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.PublicationDate;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.Visibility;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.WorkContributors;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.WorkExternalIdentifier;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.WorkExternalIdentifiers;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.WorkTitle;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.Year;
 
 import com.google.appengine.repackaged.com.google.common.base.Splitter;
-import com.google.common.collect.LinkedHashMultimap;
 
 /*
  *see http://blog.reallywow.com/archives/123

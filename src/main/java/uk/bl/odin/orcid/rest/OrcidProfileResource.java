@@ -12,7 +12,7 @@ import org.restlet.resource.ResourceException;
 
 import uk.bl.odin.orcid.client.OrcidPublicClient;
 import uk.bl.odin.orcid.guice.SelfInjectingServerResource;
-import uk.bl.odin.orcid.schema.messages.onepointone.OrcidProfile;
+import uk.bl.odin.orcid.schema.messages.onepointtwo.OrcidProfile;
 
 /**
  * Fetches orcid profiles and passes them through
